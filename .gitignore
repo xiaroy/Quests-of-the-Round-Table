@@ -7,7 +7,7 @@
 Temp/
 Obj/
 UnityGenerated/
-#Library/
+Library/
 Assets/AssetStoreTools*
 
 # ===================================== #
@@ -16,10 +16,10 @@ Assets/AssetStoreTools*
 ExportedObj/
 *.svd
 *.userprefs
-#*.csproj
+*.csproj
 *.pidb
 *.suo
-#*.sln
+*.sln
 *.user
 *.unityproj
 *.booproj
