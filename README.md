@@ -2,9 +2,9 @@
 Implementation of the card game Quests of the Round Table
 (COMP3004 Main Project Team 37)
 
-Platform:
+Platform: Visual Studio and Unity
 
-Built With:
+Languages: C#
 
 Start to End Date:
 January 2018 -
