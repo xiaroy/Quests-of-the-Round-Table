@@ -5,16 +5,12 @@ public class AIPlayer : Player
     public int i;
     public string str;
 
-	public AIPlayer() : base("AI")
+	public AIPlayer(string name):base(name)
 	{
-        
 	}
 
     public override bool playCard(Hand hand)
     {
-        /*will randomly select cards for which AI will play
-         * */
-        return null;
+        throw new NotImplementedException();
     }
-
 }
