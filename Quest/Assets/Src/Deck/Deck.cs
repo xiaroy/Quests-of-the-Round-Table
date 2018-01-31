@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Deck : Card { 
 
-    public Deck(string name, CardTypes type) : base (name, type) 
-    {
+public abstract class Deck{
+
+    private Card[] aDeck;
+
+    public Deck() {
 
     }
 
     public Card Draw () //draw a card //unsure
     {
-
+    return null;
     }
 
     public void Add(Card card) //adds a card void
@@ -20,21 +22,15 @@ public abstract class Deck : Card {
     }
 
     public void Shuffle() //shuffles deck void
+                          //fisher yates shuffle
     {
-
+      //  var random = new Random();
+      // for (int i = aDeck.Length - 1; i > 0; i--)
+      //  {
+      //      int n = random.Next(i + 1);
+      //      Card[] temp = aDeck[i];
+      //      aDeck[i] = aDeck[n];
+      //      aDeck[n] = temp;
+      //  }
     }
-
-
-
-
-
-    // Use this for initialization
-    //void Start () {
-
-    //}
-
-    // Update is called once per frame
-    //void Update () {
-
-    //}
 }
