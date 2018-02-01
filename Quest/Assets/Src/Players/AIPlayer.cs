@@ -8,6 +8,10 @@ public class AIPlayer : Player
 	public AIPlayer(string name):base(name)
 	{
 	}
+    public AIPlayer(string name, int rank, int shield, Hand hand) : base(name, rank, shield, hand)
+    {
+
+    }
 
     public override bool playCard(Hand hand)
     {
