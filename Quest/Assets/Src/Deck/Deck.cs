@@ -1,36 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 
-public abstract class Deck{
+public class Deck {
 
-    private Card[] aDeck;
+    Queue<Card> aDeck = new Queue<Card>();
+    List<Card> tempDeck = new List<Card>();
 
-    public Deck() {
-
-    }
 
     public Card Draw () //draw a card //unsure
     {
-    return null;
+        return (Card)aDeck.Dequeue();
     }
 
     public void Add(Card card) //adds a card void
     {
-        
+        aDeck.Enqueue(card);
     }
 
-    public void Shuffle() //shuffles deck void
-                          //fisher yates shuffle
+    public void Shuffle() 
     {
-      //  var random = new Random();
-      // for (int i = aDeck.Length - 1; i > 0; i--)
-      //  {
-      //      int n = random.Next(i + 1);
-      //      Card[] temp = aDeck[i];
-      //      aDeck[i] = aDeck[n];
-      //      aDeck[n] = temp;
-      //  }
+        int n = aDeck.Count;
+        System.Random rand = new System.Random();
+        int r = rand.Next(tempDeck.Count);
+
+        while (n > 0)
+        {
+            n--;
+            tempDeck.Add(aDeck.Dequeue());
+        }
+        for (int i = tempDeck.Count - 1; i > 0; i--)
+        {
+            Card random = tempDeck[r];
+            Card temp = tempDeck[r];
+        }
+        for (int i = tempDeck.Count - 1; i > 0; i--)
+        {
+            aDeck.Enqueue(tempDeck[r]);
+        }
     }
 }
