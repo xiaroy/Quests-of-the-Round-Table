@@ -18,10 +18,8 @@ public abstract class QuestCard : StoryCard
     public int getStages() { return stages; }
     public string getSpecialEnemy() { return specialEnemy; }
 
-    public override void doEffect(/*GameState gState*/)
+    public override void doEffect(GameState gState)
     {
-        /*
-         * gState.startQuest(this);
-         */
+        gState.startQuest(this);
     }
 }

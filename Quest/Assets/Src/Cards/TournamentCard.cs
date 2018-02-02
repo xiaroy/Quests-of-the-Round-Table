@@ -12,10 +12,8 @@ public class TournamentCard : StoryCard
 
     public int getReward(int participants) { return reward + participants; }
 
-    public override void doEffect(/*GameState gState*/)
+    public override void doEffect(GameState gState)
     {
-        /*
-         * gState.startTournament(this);
-         */
+        gState.startTournament(this);
     }
 }
