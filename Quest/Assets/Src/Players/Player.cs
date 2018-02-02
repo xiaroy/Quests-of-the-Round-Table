@@ -6,7 +6,7 @@ using System;
 public abstract class Player {
 
     private string name;
-    private int rank, shields;
+    public int rank, shields;
     private Hand hand;
     private Deck playPile;
 
@@ -32,7 +32,7 @@ public abstract class Player {
     //getters
     public string getName() { return name; }
 
-    public int getRank() { return rank; }
+    public Hand getPlayersCards() { return hand; }
 
     //setters
     public void setName(String name) { this.name = name; }
