@@ -24,10 +24,10 @@ public abstract class Player {
      * */
     public Player(string name, int rank, int shields, Hand hand)
     {
-        name = name;
-        rank = rank;
-        shields = shields;
-        hand = hand;
+        this.name = name;
+        this.rank = rank;
+        this.shields = shields;
+        this.hand = hand;
     }
     //getters
     public string getName() { return name; }
@@ -43,7 +43,7 @@ public abstract class Player {
 
 
     public bool addCard(Card card) {
-        if (hand.addCard(card) == true){
+        if (hand.AddCard(card) == true){
             Console.WriteLine(" Card added successfullyy");
             return true;
         }else
