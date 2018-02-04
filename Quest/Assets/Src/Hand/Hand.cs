@@ -18,7 +18,7 @@ public class Hand
         Purpose  : checks if card exist in hand 
         Return   : 0 if card not found, 1 if card found
     */
-    public bool Contains(Card card)
+    public bool handContains(Card card)
     {
         if (cardsInHand.Contains(card)) return true;
         return false;
@@ -30,7 +30,7 @@ public class Hand
                     if the current amount of card held is less than 13
         Return   : 0 if card not added, 1 if card added
     */
-    public bool AddCard(Card newCard)
+    public bool addCard(Card newCard)
     {
         if (cardsInHand.Count >= 12) return false;
         cardsInHand.Add(newCard);
@@ -44,9 +44,9 @@ public class Hand
                     if the current amount of card held is less than 13
         Return   : 0 if card not removed, 1 if card removed
     */
-    public bool RemoveCard(Card remCard)
+    public bool removeCard(Card remCard)
     {
-        if (!Contains(remCard)) return false;
+        if (!handContains(remCard)) return false;
         cardsInHand.Remove(remCard);
         currNumCards--;
         return true;
