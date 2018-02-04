@@ -43,7 +43,7 @@ public abstract class Player {
 
 
     public bool addCard(Card card) {
-        if (hand.AddCard(card) == true){
+        if (hand.addCard(card) == true){
             Console.WriteLine(" Card added successfullyy");
             return true;
         }else
