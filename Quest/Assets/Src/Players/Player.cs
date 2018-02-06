@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public abstract class Player {
 
@@ -9,6 +10,7 @@ public abstract class Player {
     public int rank, shields;
     private Hand hand;
     private Deck playPile;
+    private int battlePoints;
 
     /*creating a new Player
      * input : name (string) - name of player
@@ -42,7 +44,7 @@ public abstract class Player {
     public int currNumShields() { return shields; }
 
 
-    public bool addCard(Card card) {
+    public bool addCard(AdventureCard card) {
         if (hand.addCard(card) == true){
             Console.WriteLine(" Card added successfullyy");
             return true;
@@ -53,4 +55,45 @@ public abstract class Player {
         }
     }
     public abstract bool playCard(Hand hand);
+
+    public bool doIParticipateInTournament() 
+    {
+        return true;
+    }
+
+    public void addShields(int newShields) { shields += newShields; }
+
+    public List<Card> cardsToPlayInTournament() //Should be in AIPlayer instead?
+    {
+        AdventureCard[] cardsInHand = hand.revealHand().ToArray();
+        cardsInHand = cardsInHand.OrderByDescending(x => x.getBattlePoints()).ToArray();
+        List<Card> cardsToPlay = new List<Card>();
+        int currBattlePoints = 0;
+        foreach (AdventureCard card in cardsInHand)
+        {
+            currBattlePoints += card.getBattlePoints();
+            //Strategy 2 
+            if(currBattlePoints >= 50)
+            {
+                cardsToPlay.Add(card);
+                break;
+            }
+            else
+                cardsToPlay.Add(card);
+        }
+        //remove from hand ?
+        //should playPile be a deck ?
+        setBattlePoints(currBattlePoints);
+        return cardsToPlay;
+    }
+
+    public int getBattlePoints()
+    {
+        return battlePoints;
+    }
+
+    public void setBattlePoints(int BP)
+    {
+        this.battlePoints = BP;
+    }
 }

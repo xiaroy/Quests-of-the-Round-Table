@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameState {
 
     private Player[] players;
     private int currentTurnPlayer = 0;
 
-    private Deck adventrueDeck, storyDeck;
+    private Deck adventureDeck, storyDeck;
 
     public void init()
     {
@@ -50,7 +51,31 @@ public class GameState {
 
     public void startTournament(TournamentCard tCard)
     {
+        List<Player> participants = new List<Player>();
+        Player drawer = players[currentTurnPlayer];
 
+        foreach (Player p in players)
+        {
+            if (p.doIParticipateInTournament() == true)
+                participants.Add(p);
+        }
+
+        if (participants.Count < 2) { return; } //tournament not held
+
+        foreach(Player p in participants) //incorrect order
+        {
+            AdventureCard advenCard = (AdventureCard)adventureDeck.Draw();
+            p.addCard(advenCard);
+        }
+        foreach (Player p in participants)
+        {
+           List<Card> toPlay =  p.cardsToPlayInTournament();
+            //Do something with the cards player is playing..
+        }
+
+        //doesn't deal with ties yet
+        Player winner = participants.OrderByDescending(x => x.getBattlePoints()).First();
+        winner.addShields(tCard.getReward(participants.Count));
     }
 
     public Player hasAnyPlayerWon()
