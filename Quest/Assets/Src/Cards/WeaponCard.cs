@@ -8,7 +8,7 @@ public abstract class WeaponCard : AdventureCard
 
     public override bool hasEffect() { return false; }
 
-    public override void doEffect(/*GameState gState*/) { }
+    public override void doEffect(GameState gState) { }
 
     private static string getWeaponName(WeaponTypes type)
     {
