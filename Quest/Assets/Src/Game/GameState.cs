@@ -129,7 +129,7 @@ public class GameState {
     /// Gets the Adventure deck
     /// </summary>
     /// <returns>The Adventure deck</returns>
-    public Deck getAdventureDeck() { return adventrueDeck; }
+    public Deck getAdventureDeck() { return adventureDeck; }
     /// <summary>
     /// Gets the Story deck
     /// </summary>
