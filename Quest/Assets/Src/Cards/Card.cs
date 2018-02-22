@@ -6,6 +6,7 @@ public abstract class Card {
 
     protected string name;
     protected CardTypes type;
+    public Sprite artwork;
 
     public Card(string name, CardTypes type)
     {
