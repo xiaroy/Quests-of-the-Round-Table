@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,14 +16,44 @@ public class Rank {
         CheckRankUp();
     }
 
+    /// <summary>
+    /// Adds the given number of shields to this rank
+    /// </summary>
+    /// <param name="newShields">The number of shields to add to this rank</param>
     public void AddShields(int newShields)
     {
         shields += newShields;
         CheckRankUp();
     }
 
+    /// <summary>
+    /// Gets the current Rank
+    /// </summary>
+    /// <returns>The Current Rank contained in this class</returns>
     public Ranks getCurrentRank() { return curRank; }
+    /// <summary>
+    /// Gets the number of shields in this rank
+    /// </summary>
+    /// <returns>The number of shields that are in this rank</returns>
     public int getCurrentShields() { return shields; }
+
+    /// <summary>
+    /// Gets the number of Battle points this Rank gives you
+    /// </summary>
+    /// <returns>The number of battle points this rank gives you</returns>
+    public int getRankBattlePoints()
+    {
+        switch (curRank)
+        {
+            case Ranks.Squire:
+                return 5;
+            case Ranks.Knight:
+                return 10;
+            case Ranks.ChampionKnight:
+                return 20;
+        }
+        return 0;
+    }
 
     private void CheckRankUp()
     {
@@ -90,6 +121,16 @@ public class Rank {
     public static bool operator !=(Rank r1, Rank r2)
     {
         return !(r1.getCurrentRank() == r2.getCurrentRank() && r1.getCurrentShields() == r2.getCurrentShields());
+    }
+
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 }
 

@@ -9,6 +9,9 @@ public class GameState {
     private int currentTurnPlayer = 0;
 
     private Deck adventureDeck, storyDeck;
+    private StoryCard currentCard;
+
+    GameTime currentTime;
 
     public void init()
     {
@@ -17,10 +20,13 @@ public class GameState {
 
     public void startGame()
     {
+        currentTime = GameTime.BetweenStories;
         while (true)
         {
-            StoryCard currentCard = (StoryCard)storyDeck.Draw();
+            currentCard = (StoryCard)storyDeck.Draw();
+            currentTime = GameTime.InEvent;
             currentCard.doEffect(this);
+            currentTime = GameTime.BetweenStories;
 
             if (hasAnyPlayerWon() != null)
                 break;
@@ -56,7 +62,7 @@ public class GameState {
 
         foreach (Player p in players)
         {
-            if (p.doIParticipateInTournament() == true)
+            //if (p.doIParticipateInTournament() == true)
                 participants.Add(p);
         }
 
@@ -65,17 +71,17 @@ public class GameState {
         foreach(Player p in participants) //incorrect order
         {
             AdventureCard advenCard = (AdventureCard)adventureDeck.Draw();
-            p.addCard(advenCard);
+            p.AddCardToHand(advenCard);
         }
         foreach (Player p in participants)
         {
-           List<Card> toPlay =  p.cardsToPlayInTournament();
+           //List<Card> toPlay =  p.cardsToPlayInTournament();
             //Do something with the cards player is playing..
         }
 
         //doesn't deal with ties yet
-        Player winner = participants.OrderByDescending(x => x.getBattlePoints()).First();
-        winner.addShields(tCard.getReward(participants.Count));
+        Player winner = participants.OrderByDescending(x => x.GetBattlePoints(this)).First();
+        winner.AddShields(tCard.getReward(participants.Count));
     }
 
     /// <summary>
@@ -97,6 +103,8 @@ public class GameState {
     /// </summary>
     /// <returns>The player who's turn it currently is</returns>
     public Player getCurrentTurnPlayer() { return players[currentTurnPlayer]; }
+
+    public StoryCard getCurrentStoryCard() { return currentCard; }
 
     /// <summary>
     /// Gets an array of players is order of first place (index 0) to last place (index length - 1)
@@ -135,4 +143,34 @@ public class GameState {
     /// </summary>
     /// <returns>The Story deck</returns>
     public Deck getStoryDeck() { return storyDeck; }
+
+    public bool CanUseAbilityNow(Player source, Ability ability)
+    {
+        return ability.CanUseAbility(this, source);
+    }
+
+    public void UseAbilities(Player source, Ability[] abilities)
+    {
+        foreach (Ability ability in abilities)
+            ability.UseAbility(this, source);
+    }
+
+    public GameTime getCurrentGameTime() { return currentTime; }
+
+    public bool AddCardToQuestInfo(AdventureCard card)
+    {
+        return false;
+    }
+}
+
+public enum GameTime
+{
+    SelectSponor,
+    SelectQuestEnemies,
+    SelectCardsForQuest,
+    InQuest,
+    SelectCardsForTournament,
+    InTournament,
+    InEvent,
+    BetweenStories,
 }

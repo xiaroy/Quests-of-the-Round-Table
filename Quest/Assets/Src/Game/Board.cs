@@ -31,4 +31,25 @@ public class Board : CardSpace<AdventureCard>
     {
         return cardsInPlay.Count;
     }
+
+    public int getBoardBattlePoints(GameState state)
+    {
+        int totalBP = 0;
+        foreach (AdventureCard card in cardsInPlay)
+            if (!(state.getCurrentGameTime() == GameTime.InTournament && card.getType() == CardTypes.Ally))
+                totalBP += card.getBattlePoints(state);
+        return totalBP;
+    }
+
+    public void RemoveAllCardsWithCriteria(CardCriteria criteria)
+    {
+        foreach (AdventureCard card in cardsInPlay)
+            if (criteria.DoesMeetCriteria(card))
+                cardsInPlay.Remove(card);
+    }
+}
+
+public interface CardCriteria
+{
+    bool DoesMeetCriteria(Card card);
 }

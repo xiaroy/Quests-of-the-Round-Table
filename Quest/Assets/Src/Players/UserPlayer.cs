@@ -10,9 +10,4 @@ public class UserPlayer : Player
     {
 
     }
-
-    public override bool playCard(Card card)
-    {
-        throw new NotImplementedException();
-    }
 }
