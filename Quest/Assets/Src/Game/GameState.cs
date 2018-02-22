@@ -11,6 +11,8 @@ public class GameState {
     private Deck adventureDeck, storyDeck;
     private StoryCard currentCard;
 
+    GameTime currentTime;
+
     public void init()
     {
 
@@ -18,10 +20,13 @@ public class GameState {
 
     public void startGame()
     {
+        currentTime = GameTime.BetweenStories;
         while (true)
         {
             currentCard = (StoryCard)storyDeck.Draw();
+            currentTime = GameTime.InEvent;
             currentCard.doEffect(this);
+            currentTime = GameTime.BetweenStories;
 
             if (hasAnyPlayerWon() != null)
                 break;
@@ -139,14 +144,22 @@ public class GameState {
     /// <returns>The Story deck</returns>
     public Deck getStoryDeck() { return storyDeck; }
 
-    public bool CanPlayCardNow(Player player, AdventureCard card)
+    public bool CanUseAbilityNow(Player source, Ability ability)
     {
-        return true;
+        return ability.CanUseAbility(this, source);
     }
 
-    public void PlayCards(Player player, AdventureCard[] cards)
+    public void UseAbilities(Player source, Ability[] abilities)
     {
+        foreach (Ability ability in abilities)
+            ability.UseAbility(this, source);
+    }
 
+    public GameTime getCurrentGameTime() { return currentTime; }
+
+    public bool AddCardToQuestInfo(AdventureCard card)
+    {
+        return false;
     }
 }
 
@@ -154,8 +167,10 @@ public enum GameTime
 {
     SelectSponor,
     SelectQuestEnemies,
-    SelectForQuest,
+    SelectCardsForQuest,
+    InQuest,
+    SelectCardsForTournament,
     InTournament,
     InEvent,
-
+    BetweenStories,
 }
