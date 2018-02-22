@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu(fileName = "New Quest Card", menuName = "Quest Card")]
+
 public class QuestCard : StoryCard
 {
     protected int reward;

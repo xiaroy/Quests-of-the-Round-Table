@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu(fileName = "New Foe Card", menuName = "Foe Card")]
+
 
 public class FoeCard : AdventureCard
 {

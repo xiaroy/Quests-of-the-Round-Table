@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu(fileName = "New Ally Card", menuName = "Ally Card")]
-
 public class AllyCard : AdventureCard
 {
     public AllyCard(string name, int battlePoints) : base(name, CardTypes.Ally, battlePoints) { }
