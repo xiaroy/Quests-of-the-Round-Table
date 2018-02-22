@@ -16,21 +16,17 @@ public abstract class AdventureCard : Card
     /// Gets the amount of points this card is worth when used in battle
     /// </summary>
     /// <returns>The number of points thsi card is worth when used in battle</returns>
-    public int getBattlePoints() { return battlePoints; }
+    public int getBattlePoints(GameState gState) { return battlePoints; }
     /// <summary>
     /// Gets the amount of cards this card is worth when bidding
     /// </summary>
+    /// <param name="gState">The game state to use this cards effect on</param>
     /// <returns>The amount of cards this card is worth when bidding</returns>
-    public int getBidPower() { return bidPower; }
-    /// <summary>
-    /// Gets if this card has any special effects
-    /// </summary>
-    /// <returns>True if this card has any special effects</returns>
-    public abstract bool hasEffect();
+    public int getBidPower(GameState gState) { return bidPower; }
 
     /// <summary>
-    /// Uses any special effects this card has on the given game state
+    /// Gets any abilities that this card has
     /// </summary>
-    /// <param name="gState">The game state to use this cards effect on</param>
-    public abstract void doEffect(GameState gState);
+    /// <returns>All of this cards special abilities, returns null if it has no abilities</returns>
+    public abstract Ability[] GetAbilities();
 }

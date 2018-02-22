@@ -9,7 +9,7 @@ public abstract class Player {
     private string name;
     public int rank, shields;
     private Hand hand;
-    private Deck playPile;
+    private List<AdventureCard> playPile = new List<AdventureCard>();
     private int battlePoints;
 
     /*creating a new Player
@@ -36,6 +36,11 @@ public abstract class Player {
 
     public Hand getPlayersCards() { return hand; }
 
+    public void getInput()
+    {
+        
+    }
+
     //setters
     public void setName(String name) { this.name = name; }
 
@@ -54,7 +59,7 @@ public abstract class Player {
             return false;
         }
     }
-    public abstract bool playCard(Hand hand);
+    public abstract bool playCard(Card card);
 
     public bool doIParticipateInTournament() 
     {
