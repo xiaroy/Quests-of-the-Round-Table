@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class QuestCard : StoryCard
+
+public class QuestCard : StoryCard
 {
     protected int reward;
     protected int stages;

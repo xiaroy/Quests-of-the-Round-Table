@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class FoeCard : AdventureCard
+
+
+public class FoeCard : AdventureCard
 {
     protected int highBattlePoints;
 
@@ -10,9 +12,19 @@ public abstract class FoeCard : AdventureCard
         this.highBattlePoints = highBattlePoints;
     }
 
+    public override void doEffect()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public int getMatchBattlePoints() {
         if (highBattlePoints != -1)
             return highBattlePoints;
         return battlePoints;
+    }
+
+    public override bool hasEffect()
+    {
+        throw new System.NotImplementedException();
     }
 }

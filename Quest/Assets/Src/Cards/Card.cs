@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Card {
+public class Card : ScriptableObject{
 
     protected string name;
     protected CardTypes type;
+    public Sprite artwork;
 
     public Card(string name, CardTypes type)
     {
