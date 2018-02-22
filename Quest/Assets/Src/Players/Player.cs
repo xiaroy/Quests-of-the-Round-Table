@@ -36,6 +36,8 @@ public abstract class Player {
 
     public AdventureCard[] getPlayersCards() { return hand.GetCards(); }
 
+    public AdventureCard[] getPlayersBoard() { return board.GetCards(); }
+
     //setters
     public void SetName(String name) { this.name = name; }
 
