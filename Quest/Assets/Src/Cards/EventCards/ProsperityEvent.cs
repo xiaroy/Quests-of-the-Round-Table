@@ -14,7 +14,7 @@ public class ProsperityEvent : EventCard
         foreach (Player player in gState.getPlayers())
         {
             for (int i = 0; i < 2; i++)
-                player.addCard((AdventureCard)gState.getAdventureDeck().Draw());
+                player.AddCardToHand((AdventureCard)gState.getAdventureDeck().Draw());
         }
     }
 }
