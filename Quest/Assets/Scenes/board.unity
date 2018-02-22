@@ -259,12 +259,12 @@ Prefab:
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 204.5
+      value: 382.5
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -105
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
@@ -359,12 +359,12 @@ Prefab:
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 527
+      value: 705
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -118.2
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
@@ -530,12 +530,12 @@ Prefab:
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 398
+      value: 576
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -118.2
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
@@ -634,12 +634,12 @@ Prefab:
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 462.5
+      value: 640.5
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -105
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
@@ -829,12 +829,12 @@ Prefab:
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 333.5
+      value: 511.5
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -105
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
@@ -940,7 +940,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5147059, g: 0.5147059, b: 0.5147059, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1041,8 +1041,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -88.2}
-  m_SizeDelta: {x: 0, y: 176.4}
+  m_AnchoredPosition: {x: 0, y: -127.67543}
+  m_SizeDelta: {x: 0, y: 241.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335995566
 MonoBehaviour:
@@ -1170,7 +1170,7 @@ MonoBehaviour:
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 11400000, guid: cc31e626f267cea4e93e3175c9f029bc,
+  m_fontColorGradientPreset: {fileID: 11400000, guid: e002cb2a36d9e4a439a062867fa24e1e,
     type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -1359,8 +1359,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 310}
-  m_SizeDelta: {x: 0, y: 210}
+  m_AnchoredPosition: {x: 0, y: 316.8}
+  m_SizeDelta: {x: 0, y: 236.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1396162750
 MonoBehaviour:
@@ -1478,12 +1478,12 @@ Prefab:
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 269
+      value: 447
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -118.2
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
@@ -1599,9 +1599,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.051470578, g: 0.051470578, b: 0.051470578, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.72794116, g: 0.72794116, b: 0.72794116, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1991,12 +1991,12 @@ Prefab:
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 140
+      value: 318
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -118.2
       objectReference: {fileID: 0}
     - target: {fileID: 224813594978375948, guid: 111521e55f55ac243bcb87428fdc1db0,
         type: 2}
