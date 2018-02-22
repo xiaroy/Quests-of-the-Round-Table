@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu (fileName = "New Weapon Card", menuName = "Weapon Card")]
-public class WeaponCard : AdventureCard
+public abstract class WeaponCard : AdventureCard
 {
 
     public WeaponCard(WeaponTypes type) : base(getWeaponName(type), CardTypes.Weapon, getBattlePoints(type)) { }
 
-    public override bool hasEffect() { return false; }
-
-    public override void doEffect(/*GameState gState*/) { }
+    public override Ability[] GetAbilities()
+    {
+        return null;
+    }
 
     private static string getWeaponName(WeaponTypes type)
     {
@@ -50,6 +50,7 @@ public class WeaponCard : AdventureCard
         }
         return 0;
     }
+
 }
 
 public enum WeaponTypes
