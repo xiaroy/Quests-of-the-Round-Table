@@ -114,7 +114,7 @@ public class GameState {
         {
             for (int j = i + 1; j < orderedPlayers.Length; j++)
             {
-                if (orderedPlayers[i].currNumShields() > orderedPlayers[j].currNumShields())
+                if (orderedPlayers[i].GetRank() > orderedPlayers[j].GetRank())
                 {
                     Player temp = orderedPlayers[i];
                     orderedPlayers[i] = orderedPlayers[j];
