@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : ScriptableObject{
+public abstract class Card {
 
     protected string name;
     protected CardTypes type;

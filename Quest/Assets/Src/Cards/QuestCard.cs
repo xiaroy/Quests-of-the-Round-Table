@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class QuestCard : StoryCard
+public abstract class QuestCard : StoryCard
 {
     protected int reward;
     protected int stages;

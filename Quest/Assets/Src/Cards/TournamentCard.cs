@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class TournamentCard : StoryCard
+public abstract class TournamentCard : StoryCard
 {
     public int reward;
 
