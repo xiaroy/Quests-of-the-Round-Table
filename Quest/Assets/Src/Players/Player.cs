@@ -43,6 +43,7 @@ public abstract class Player {
     }
 
     //setters
+    ///
     public void setName(String name) { this.name = name; }
 
     public void addShields(int shields) { rank.AddShields(shields); }

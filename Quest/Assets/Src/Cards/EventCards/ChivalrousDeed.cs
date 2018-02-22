@@ -8,11 +8,13 @@ public class ChivalrousDeed : EventCard
 
     public override void doEffect(GameState gState)
     {
+        //initialization;
         Player[] players = gState.getPlayersInRankOrder();
-        Player[] lowest = gState.getPlayers();
+        Player[] lowest = new Player[4];
         int i = 1;
-        lowest[0] = players[0];
+        lowest[0] = players[players.Length-1];
 
+        //find lowest and put in lowest
         foreach (Player player in gState.getPlayers())
         {
             if(player.GetRank() == players[players.Length - 1].GetRank())
@@ -22,6 +24,7 @@ public class ChivalrousDeed : EventCard
             }
         }
 
+        //add three shields for lowest
         foreach (Player p in lowest)
         {
             p.addShields(3);
