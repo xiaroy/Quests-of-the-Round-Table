@@ -47,6 +47,11 @@ public abstract class Controller {
     {
         gState.UseAbilities(source, abilities);
     }
+
+    public void GetPlayerPerspective(Player player)
+    {
+
+    }
 }
 
 public enum ControllerMessageType
