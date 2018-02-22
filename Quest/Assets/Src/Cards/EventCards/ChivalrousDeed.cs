@@ -27,7 +27,7 @@ public class ChivalrousDeed : EventCard
         //add three shields for lowest
         foreach (Player p in lowest)
         {
-            p.addShields(3);
+            p.AddShields(3);
         }
     }
 }
