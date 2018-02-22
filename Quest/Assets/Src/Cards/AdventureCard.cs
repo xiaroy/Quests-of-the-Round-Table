@@ -22,7 +22,7 @@ public abstract class AdventureCard : Card
     /// </summary>
     /// <param name="gState">The game state to use this cards effect on</param>
     /// <returns>The amount of cards this card is worth when bidding</returns>
-    public int getBidPower(GameState gState) { return bidPower; }
+    public virtual int getBidPower(GameState gState) { return bidPower; }
 
     /// <summary>
     /// Gets any abilities that this card has
