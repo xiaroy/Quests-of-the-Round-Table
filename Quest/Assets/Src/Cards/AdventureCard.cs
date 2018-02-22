@@ -16,7 +16,7 @@ public abstract class AdventureCard : Card
     /// Gets the amount of points this card is worth when used in battle
     /// </summary>
     /// <returns>The number of points thsi card is worth when used in battle</returns>
-    public int getBattlePoints(GameState gState) { return battlePoints; }
+    public virtual int getBattlePoints(GameState gState) { return battlePoints; }
     /// <summary>
     /// Gets the amount of cards this card is worth when bidding
     /// </summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,20 @@ public class Rank {
 
     public Ranks getCurrentRank() { return curRank; }
     public int getCurrentShields() { return shields; }
+
+    public int getRankBattlePoints()
+    {
+        switch (curRank)
+        {
+            case Ranks.Squire:
+                return 5;
+            case Ranks.Knight:
+                return 10;
+            case Ranks.ChampionKnight:
+                return 20;
+        }
+        return 0;
+    }
 
     private void CheckRankUp()
     {
@@ -90,6 +105,28 @@ public class Rank {
     public static bool operator !=(Rank r1, Rank r2)
     {
         return !(r1.getCurrentRank() == r2.getCurrentRank() && r1.getCurrentShields() == r2.getCurrentShields());
+    }
+
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    static void Main(string[] args)
+    {
+        Rank r1 = new Rank(Ranks.Squire, 3);
+        Rank r2 = new Rank(Ranks.Squire, 3);
+        Rank r3 = new Rank(Ranks.Knight, 3);
+
+        Console.WriteLine(r1 == r2);
+        Console.WriteLine(r1 == r3);
+        Console.WriteLine(r1 < r3);
+        Console.WriteLine(r1 > r3);
     }
 }
 

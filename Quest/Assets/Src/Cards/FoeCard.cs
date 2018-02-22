@@ -3,7 +3,7 @@ using System.Collections;
 
 
 
-public class FoeCard : AdventureCard
+public abstract class FoeCard : AdventureCard
 {
     protected int HighBattlePoint;
 
