@@ -12,9 +12,21 @@ public abstract class AdventureCard : Card
         this.bidPower = bidPower;
     }
 
-    public int getBattlePoints() { return battlePoints; }
-    public int getBidPower() { return bidPower; }
-    public abstract bool hasEffect();
+    /// <summary>
+    /// Gets the amount of points this card is worth when used in battle
+    /// </summary>
+    /// <returns>The number of points thsi card is worth when used in battle</returns>
+    public int getBattlePoints(GameState gState) { return battlePoints; }
+    /// <summary>
+    /// Gets the amount of cards this card is worth when bidding
+    /// </summary>
+    /// <param name="gState">The game state to use this cards effect on</param>
+    /// <returns>The amount of cards this card is worth when bidding</returns>
+    public int getBidPower(GameState gState) { return bidPower; }
 
-    public abstract void doEffect(/*GameState gState*/);
+    /// <summary>
+    /// Gets any abilities that this card has
+    /// </summary>
+    /// <returns>All of this cards special abilities, returns null if it has no abilities</returns>
+    public abstract Ability[] GetAbilities();
 }

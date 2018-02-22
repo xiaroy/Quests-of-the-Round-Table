@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public abstract class Player {
 
     private string name;
-    public int rank, shields;
+    private Rank rank;
     private Hand hand;
-    private Deck playPile;
+    private Board board;
+    private int battlePoints;
 
     /*creating a new Player
      * input : name (string) - name of player
@@ -16,34 +18,40 @@ public abstract class Player {
     public Player(string name)
     {
         this.name = name;
-        this.rank = 1;
-        this.shields = 0;
+        rank = new Rank();
+        board = new Board();
+        hand = new Hand();
     }
     /*constructor to create a player from given attributes
      * would be good for test cases
      * */
-    public Player(string name, int rank, int shields, Hand hand)
+    public Player(string name, Ranks rank, int shields, Hand hand)
     {
         this.name = name;
-        this.rank = rank;
-        this.shields = shields;
+        this.rank = new Rank(rank, shields);
         this.hand = hand;
+        board = new Board();
     }
     //getters
     public string getName() { return name; }
 
     public Hand getPlayersCards() { return hand; }
 
+    public void getInput()
+    {
+        
+    }
+
     //setters
     public void setName(String name) { this.name = name; }
 
-    public void increaseRank() { rank++; }
+    public void addShields(int shields) { rank.AddShields(shields); }
 
-    public int currNumShields() { return shields; }
+    public Rank GetRank() { return rank; }
 
 
-    public bool addCard(Card card) {
-        if (hand.addCard(card) == true){
+    public bool addCard(AdventureCard card) {
+        if (hand.AddCard(card) == true){
             Console.WriteLine(" Card added successfullyy");
             return true;
         }else
@@ -52,5 +60,45 @@ public abstract class Player {
             return false;
         }
     }
-    public abstract bool playCard(Hand hand);
+    public abstract bool playCard(Card card);
+
+    public bool doIParticipateInTournament() 
+    {
+        return true;
+    }
+
+
+    public List<Card> cardsToPlayInTournament() //Should be in AIPlayer instead?
+    {
+        AdventureCard[] cardsInHand = hand.GetCards();
+        cardsInHand = cardsInHand.OrderByDescending(x => x.getBattlePoints(null)).ToArray();
+        List<Card> cardsToPlay = new List<Card>();
+        int currBattlePoints = 0;
+        foreach (AdventureCard card in cardsInHand)
+        {
+            currBattlePoints += card.getBattlePoints(null);
+            //Strategy 2 
+            if (currBattlePoints >= 50)
+            {
+                cardsToPlay.Add(card);
+                break;
+            }
+            else
+                cardsToPlay.Add(card);
+        }
+        //remove from hand ?
+        //should playPile be a deck ?
+        setBattlePoints(currBattlePoints);
+        return cardsToPlay;
+    }
+
+    public int getBattlePoints()
+    {
+        return battlePoints;
+    }
+
+    public void setBattlePoints(int BP)
+    {
+        this.battlePoints = BP;
+    }
 }

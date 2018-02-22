@@ -9,7 +9,7 @@ public class TestCard : AdventureCard
 
     public override bool hasEffect() { return true; }
 
-    public override void doEffect(/*GameState gState*/)
+    public override void doEffect(GameState gState)
     {
         /*
          * gState.startTest(this);

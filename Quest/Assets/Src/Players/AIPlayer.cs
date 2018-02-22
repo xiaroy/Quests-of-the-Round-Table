@@ -13,7 +13,7 @@ public class AIPlayer : Player
 
     }
 
-    public override bool playCard(Hand hand)
+    public override bool playCard(Card card)
     {
         throw new NotImplementedException();
     }

@@ -4,10 +4,9 @@ using System.Threading;
 using UnityEngine;
 
 
-public class Deck {
+public class Deck : CardSpace<Card>{
 
     Queue<Card> aDeck = new Queue<Card>(); //Queue for the Deck
-    List<Card> tempDeck = new List<Card>(); //List used to store components of Queue for shuffling
 
 
     public Card Draw () //draw a card 
@@ -15,13 +14,35 @@ public class Deck {
         return (Card)aDeck.Dequeue(); //Dequeue from Deck
     }
 
-    public void Add(Card card) //adds a card void
+    public bool AddCard(Card card) //adds a card void
     {
         aDeck.Enqueue(card);//Enqueue card
+        return true;
+    }
+
+    public bool RemoveCard(Card card)
+    {
+        return false;
+    }
+
+    public bool ContainsCard(Card card)
+    {
+        return aDeck.Contains(card);
+    }
+
+    public int TotalCards()
+    {
+        return aDeck.Count;
+    }
+
+    public Card[] GetCards()
+    {
+        return aDeck.ToArray();
     }
 
     public void Shuffle() 
     {
+        List<Card> tempDeck = new List<Card>(); //List used to store components of Queue for shuffling
         int n = aDeck.Count; //number of cards
 
         while (n > 0) //remove all components of deck and add it to temp deck for shuffle

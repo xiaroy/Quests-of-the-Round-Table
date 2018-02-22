@@ -14,7 +14,15 @@ public class Card : ScriptableObject{
         this.type = type;
     }
 
+    /// <summary>
+    /// Gets the name of this card
+    /// </summary>
+    /// <returns>The name of this card</returns>
     public string getName() { return name; }
+    /// <summary>
+    /// Gets the type of card this is
+    /// </summary>
+    /// <returns>The type of card this is</returns>
     public CardTypes getType() { return type; }
 }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class WeaponCard : AdventureCard
+public class WeaponCard : AdventureCard
 {
 
     public WeaponCard(WeaponTypes type) : base(getWeaponName(type), CardTypes.Weapon, getBattlePoints(type)) { }
