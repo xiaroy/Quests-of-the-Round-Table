@@ -10,7 +10,6 @@ public class ProsperityEvent : EventCard
     public override void doEffect(GameState gState)
     {
         //Each player draws 2 cards
-        Player[] players = gState.getPlayers();
         foreach (Player player in gState.getPlayers())
         {
             for (int i = 0; i < 2; i++)
