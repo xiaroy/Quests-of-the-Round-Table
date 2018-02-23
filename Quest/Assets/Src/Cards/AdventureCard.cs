@@ -6,7 +6,7 @@ public abstract class AdventureCard : Card
     protected int battlePoints;
     protected int bidPower;
 
-    public AdventureCard(string name, CardTypes type, int battlePoints, int bidPower = 1) : base(name, type)
+    public AdventureCard(string name, CardTypes type, int battlePoints, int bidPower = 0) : base(name, type)
     {
         this.battlePoints = battlePoints;
         this.bidPower = bidPower;

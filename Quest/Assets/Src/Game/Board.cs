@@ -41,6 +41,14 @@ public class Board : CardSpace<AdventureCard>
         return totalBP;
     }
 
+    public int getBoardFreeBids(GameState state)
+    {
+        int total = 0;
+        foreach (AdventureCard card in cardsInPlay)
+            total += card.getBidPower(state);
+        return total;
+    }
+
     public void RemoveAllCardsWithCriteria(CardCriteria criteria)
     {
         foreach (AdventureCard card in cardsInPlay)
