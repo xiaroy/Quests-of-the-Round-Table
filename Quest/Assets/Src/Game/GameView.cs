@@ -35,6 +35,8 @@ public class GameView
         }
     }
 
+    public StoryCard GetCurrentStory() { return currentStory; }
+
     public string GetPerspectiveName()
     {
         if (perspective == null)
