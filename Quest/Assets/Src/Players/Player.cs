@@ -67,6 +67,7 @@ public abstract class Player {
     public bool RemoveCardFromHand(AdventureCard card) { return hand.RemoveCard(card); }
     public bool RemoveCardFromBoard(AdventureCard card) { return board.RemoveCard(card); }
     
+    public void RemoveCardsFromBoardWithCriteria(CardCriteria criteria) { board.RemoveAllCardsWithCriteria(criteria); }
 
     public int GetBattlePoints(GameState state)
     {
