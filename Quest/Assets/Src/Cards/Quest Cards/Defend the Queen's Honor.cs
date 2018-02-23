@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefendtheQueen'sHonor : MonoBehaviour {
+public class DefendtheQueensHonor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
