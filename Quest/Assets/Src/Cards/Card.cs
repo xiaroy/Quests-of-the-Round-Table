@@ -32,6 +32,7 @@ public enum CardTypes
     Quest,
     Tournament,
     Weapon,
+    Amour,
     Ally,
     Foe,
     Test,

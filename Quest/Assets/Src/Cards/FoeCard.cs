@@ -3,15 +3,30 @@ using System.Collections;
 
 
 
-public abstract class FoeCard : AdventureCard
+public class FoeCard : AdventureCard
 {
-    protected int HighBattlePoint;
+    protected int highBattlePoint;
 
     public FoeCard(FoeTypes type) : base(getFoeName(type), CardTypes.Foe, getLowBattlePoints(type))
     {
-        HighBattlePoint = getHighBattlePoints(type);
+        highBattlePoint = getHighBattlePoints(type);
     }
 
+    public override int getBattlePoints(GameState gState)
+    {
+        if (gState.getCurrentStoryCard().getType() == CardTypes.Quest)
+        {
+            QuestCard curQuest = (QuestCard)gState.getCurrentStoryCard();
+            if (curQuest.getSpecialEnemy().Equals(this.getName()))
+                return highBattlePoint;
+        }
+        return battlePoints;
+    }
+
+    public override Ability[] GetAbilities()
+    {
+        return null;
+    }
 
     public static string getFoeName(FoeTypes name)
     {
@@ -101,11 +116,6 @@ public abstract class FoeCard : AdventureCard
                 return 30;
         }
         return 0;
-    }
-
-    public override Ability[] GetAbilities()
-    {
-        throw new System.NotImplementedException();
     }
 }
 

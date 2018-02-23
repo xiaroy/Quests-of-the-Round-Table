@@ -46,14 +46,8 @@ public abstract class Player {
     public Rank GetRank() { return rank; }
 
 
-    public bool AddCardToHand(AdventureCard card)
-    {
-        return hand.AddCard(card);
-    }
-    public bool AddCardToBoard(AdventureCard card)
-    {
-        return board.AddCard(card);
-    }
+    public bool AddCardToHand(AdventureCard card) { return hand.AddCard(card); }
+    public bool AddCardToBoard(AdventureCard card) { return board.AddCard(card); }
     public bool PlayCardFromHandToBoard(AdventureCard card)
     {
         if (hand.ContainsCard(card))
@@ -66,10 +60,21 @@ public abstract class Player {
         }
         return false;
     }
+
+    public bool HandContains(AdventureCard card) { return hand.ContainsCard(card); }
+    public bool BoardContains(AdventureCard card) { return board.ContainsCard(card); }
+
+    public bool RemoveCardFromHand(AdventureCard card) { return hand.RemoveCard(card); }
+    public bool RemoveCardFromBoard(AdventureCard card) { return board.RemoveCard(card); }
     
 
     public int GetBattlePoints(GameState state)
     {
         return board.getBoardBattlePoints(state) + rank.getRankBattlePoints();
+    }
+
+    public int GetMaximumBids(GameState state)
+    {
+        return board.getBoardFreeBids(state) + hand.GetTotalBids(state);
     }
 }

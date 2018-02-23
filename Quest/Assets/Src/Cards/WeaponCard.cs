@@ -11,7 +11,7 @@ public class WeaponCard : AdventureCard
         return null;
     }
 
-    private static string getWeaponName(WeaponTypes type)
+    public static string getWeaponName(WeaponTypes type)
     {
         switch (type)
         {
