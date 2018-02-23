@@ -16,15 +16,31 @@ public class Rank {
         CheckRankUp();
     }
 
+    /// <summary>
+    /// Adds the given number of shields to this rank
+    /// </summary>
+    /// <param name="newShields">The number of shields to add to this rank</param>
     public void AddShields(int newShields)
     {
         shields += newShields;
         CheckRankUp();
     }
 
+    /// <summary>
+    /// Gets the current Rank
+    /// </summary>
+    /// <returns>The Current Rank contained in this class</returns>
     public Ranks getCurrentRank() { return curRank; }
+    /// <summary>
+    /// Gets the number of shields in this rank
+    /// </summary>
+    /// <returns>The number of shields that are in this rank</returns>
     public int getCurrentShields() { return shields; }
 
+    /// <summary>
+    /// Gets the number of Battle points this Rank gives you
+    /// </summary>
+    /// <returns>The number of battle points this rank gives you</returns>
     public int getRankBattlePoints()
     {
         switch (curRank)
@@ -115,18 +131,6 @@ public class Rank {
     public override int GetHashCode()
     {
         return base.GetHashCode();
-    }
-
-    static void Main(string[] args)
-    {
-        Rank r1 = new Rank(Ranks.Squire, 3);
-        Rank r2 = new Rank(Ranks.Squire, 3);
-        Rank r3 = new Rank(Ranks.Knight, 3);
-
-        Console.WriteLine(r1 == r2);
-        Console.WriteLine(r1 == r3);
-        Console.WriteLine(r1 < r3);
-        Console.WriteLine(r1 > r3);
     }
 }
 

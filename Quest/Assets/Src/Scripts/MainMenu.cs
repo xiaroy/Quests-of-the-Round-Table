@@ -9,9 +9,12 @@ public class MainMenu : MonoBehaviour {
 	// Use this for initialization
 	public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("board",LoadSceneMode.Single);
     }
-
+    public void Back()
+    {
+        SceneManager.LoadScene("beginning", LoadSceneMode.Single);
+    }
     public void Quit()
     {
         Debug.Log("Thanks for Playing Byeeeeeeeee!!!!!!");

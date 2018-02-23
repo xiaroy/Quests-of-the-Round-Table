@@ -36,7 +36,8 @@ public class Board : CardSpace<AdventureCard>
     {
         int totalBP = 0;
         foreach (AdventureCard card in cardsInPlay)
-            totalBP += card.getBattlePoints(state);
+            if (!(state.getCurrentGameTime() == GameTime.InTournament && card.getType() == CardTypes.Ally))
+                totalBP += card.getBattlePoints(state);
         return totalBP;
     }
 
