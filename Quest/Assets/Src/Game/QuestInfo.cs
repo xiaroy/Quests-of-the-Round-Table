@@ -4,10 +4,43 @@ using UnityEngine;
 
 public class QuestInfo {
 
-    private int numOfStages = 0;
+    private Player sponsor;
+    private QuestCard card;
+    private AdventureCard[][] stages;
 
-	public QuestInfo(int numOfStages)
+	public QuestInfo(QuestCard card, Player sponsor)
     {
+        this.sponsor = sponsor;
+        this.card = card;
+        stages = new AdventureCard[card.getStages()][];
+    }
 
+    public Player GetSponsor() { return sponsor; }
+
+    public int GetNumberOfStages() { return card.getStages(); }
+
+    public void SetCardsForStage(int i, AdventureCard[] cards)
+    {
+        if (stages[i] != null)
+            foreach (AdventureCard card in stages[i])
+                sponsor.AddCardToHand(card);
+
+        List<AdventureCard> playableCards = new List<AdventureCard>();
+        foreach (AdventureCard card in cards)
+            if (sponsor.HandContains(card))
+            {
+                playableCards.Add(card);
+                sponsor.RemoveCardFromHand(card);
+            }
+        stages[i] = playableCards.ToArray();
+    }
+    public AdventureCard[] GetCardsForStage(int i) { return stages[i]; }
+
+    public int GetBattlePointsForStage(int i, GameState state)
+    {
+        int total = 0;
+        foreach (AdventureCard card in stages[i])
+            total += card.getBattlePoints(state);
+        return total;
     }
 }

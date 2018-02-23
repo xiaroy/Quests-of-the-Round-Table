@@ -61,5 +61,10 @@ public class Hand : CardSpace<AdventureCard>
         return cardsInHand.ToArray();
     }
 
+    public int GetTotalBids(GameState state)
+    {
+        return cardsInHand.Count;
+    }
+
     
 }

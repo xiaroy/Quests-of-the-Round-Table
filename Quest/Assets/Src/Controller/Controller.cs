@@ -5,9 +5,14 @@ using UnityEngine;
 
 public abstract class Controller {
 
-    GameState gState;
+    private GameState gState;
 
-    Dictionary<Player, bool> inputRecieved = new Dictionary<Player, bool>();
+    private Dictionary<Player, bool> inputRecieved = new Dictionary<Player, bool>();
+
+    public void SetGameState(GameState gState)
+    {
+        this.gState = gState;
+    }
 
     public bool[] PromptUserQuestion(Player[] players, string msg)
     {
@@ -41,6 +46,11 @@ public abstract class Controller {
     public void UseCardAbilities(Player source, Ability[] abilities)
     {
         gState.UseAbilities(source, abilities);
+    }
+
+    public GameView GetPlayerPerspective(Player player)
+    {
+        return new GameView(gState, player);
     }
 }
 

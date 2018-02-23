@@ -5,6 +5,8 @@ using System.Linq;
 
 public class GameState {
 
+    private Controller controller;
+
     private Player[] players;
     private int currentTurnPlayer = 0;
 
@@ -13,10 +15,12 @@ public class GameState {
 
     GameTime currentTime;
 
-    public void init()
+    public void Init()
     {
 
     }
+
+    public void setController(Controller controller) { this.controller = controller; }
 
     public void startGame()
     {
