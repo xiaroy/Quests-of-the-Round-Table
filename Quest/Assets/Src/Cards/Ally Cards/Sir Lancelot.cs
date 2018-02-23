@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SirGawain : AllyCard
+public class SirLancelot : AllyCard
 {
 
-    public SirGawain() : base("Sir Gawain", 10, 1) //base 10
+    public SirLancelot() : base("Sir Lancelot", 15, 1) //base 5
     {
 
     }
 
     public override int getBattlePoints(GameState gState) //override 20
     {
-        if (gState.getCurrentStoryCard().getName().Equals("Test of the Green Knight"))
+        if (gState.getCurrentStoryCard().getName().Equals("Defend the Queen's Honor"))
         {
-            return battlePoints = 20;
+            return battlePoints = 25;
         }
-        return battlePoints = 10;
+        return battlePoints = 15;
     }
 
     public override Ability[] GetAbilities() //no ability

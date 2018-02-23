@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SirGalahad : MonoBehaviour {
+public class SirGalahad : AllyCard {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    //vs push test
+    public SirGalahad(): base("Sir Galahad", 15, 1)
+    {
+
+    }
+    public override Ability[] GetAbilities()
+    {
+        return null;
+    }
+
 }

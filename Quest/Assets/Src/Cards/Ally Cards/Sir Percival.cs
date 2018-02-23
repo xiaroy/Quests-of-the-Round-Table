@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SirGawain : AllyCard
+public class SirPercival : AllyCard
 {
 
-    public SirGawain() : base("Sir Gawain", 10, 1) //base 10
+    public SirPercival() : base("Sir Percival", 5, 1) //base 5
     {
 
     }
 
     public override int getBattlePoints(GameState gState) //override 20
     {
-        if (gState.getCurrentStoryCard().getName().Equals("Test of the Green Knight"))
+        if (gState.getCurrentStoryCard().getName().Equals("Search for the Holy Grail"))
         {
             return battlePoints = 20;
         }
-        return battlePoints = 10;
+        return battlePoints = 5;
     }
 
     public override Ability[] GetAbilities() //no ability

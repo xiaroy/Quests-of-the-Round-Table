@@ -15,7 +15,7 @@ public class GameState {
 
     GameTime currentTime;
 
-    public void init()
+    public void Init()
     {
 
     }
