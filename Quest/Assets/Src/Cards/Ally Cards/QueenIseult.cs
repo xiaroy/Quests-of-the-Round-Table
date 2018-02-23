@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SirTristan : AllyCard
+public class QueenIseult : AllyCard
 {
 
-    public SirTristan() : base("Sir Tristan", 10, 1) //base 10
+    public QueenIseult() : base("Queen Iseult", 0, 2) //base 10
     {
 
     }
 
     public override int getBattlePoints(GameState gState) //override 20
     {
-        Player[] players = gState.getPlayers();
+        //Player[] players = gState.getPlayers();
         foreach (Player player in gState.getPlayers())
         {
-            if (player.getPlayersBoard().Equals("Queen Iseult"))
+            if (player.getPlayersBoard().Equals("Sir Tristan"))
             {
-                return battlePoints = 20;
+                return bidPower = 4;
             }
-            return battlePoints = 10;
+            return bidPower = 2;
         }
-        return battlePoints = 10;
+        return bidPower = 2;
     }
 
     public override Ability[] GetAbilities() //no ability
