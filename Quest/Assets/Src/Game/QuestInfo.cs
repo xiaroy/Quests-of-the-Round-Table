@@ -43,4 +43,12 @@ public class QuestInfo {
             total += card.getBattlePoints(state);
         return total;
     }
+
+    public int getTotalCardsPlayed()
+    {
+        int total = 0;
+        for (int i = 0; i < stages.Length; i++)
+            total += stages[i].Length;
+        return total;
+    }
 }
