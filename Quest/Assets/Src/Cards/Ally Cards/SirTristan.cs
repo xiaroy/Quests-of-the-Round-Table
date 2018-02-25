@@ -12,7 +12,7 @@ public class SirTristan : AllyCard
 
     public override int getBattlePoints(GameState gState) //override 20
     {
-        Player[] players = gState.getPlayers();
+        //Player[] players = gState.getPlayers();
         foreach (Player player in gState.getPlayers())
         {
             if (player.getPlayersBoard().Equals("Queen Iseult"))
