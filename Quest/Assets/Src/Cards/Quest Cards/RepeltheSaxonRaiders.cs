@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeltheSaxonRaiders : MonoBehaviour {
+public class RepeltheSaxonRaiders : QuestCard
+{
+    public RepeltheSaxonRaiders() : base(" Repel the Saxon Raider's", 2, "Saxons") //"Saxon Knight"
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
 }

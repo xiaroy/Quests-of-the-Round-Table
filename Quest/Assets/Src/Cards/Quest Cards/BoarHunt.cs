@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoarHunt : MonoBehaviour {
+public class BoarHunt : QuestCard
+{
+    public BoarHunt() : base("Boar Hunt", 2, "boar")
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
 }

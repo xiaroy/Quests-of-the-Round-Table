@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestoftheGreenKnight : MonoBehaviour {
+public class TestoftheGreenKnight : QuestCard
+{
+    public TestoftheGreenKnight() : base("Test of the Green Knight", 3, "GreenKnight")
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
 }

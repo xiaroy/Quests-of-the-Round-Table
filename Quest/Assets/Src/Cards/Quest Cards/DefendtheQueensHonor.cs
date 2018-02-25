@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefendtheQueensHonor : MonoBehaviour {
+public class DefendtheQueensHonor : QuestCard
+{
+    public DefendtheQueensHonor() : base("Defend the Queen's Honor", 3, null) //all
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    {
+
+    }
+
 }
