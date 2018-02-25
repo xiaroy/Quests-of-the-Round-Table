@@ -11,6 +11,8 @@ public class Deck : CardSpace<Card>{
 
     public Card Draw () //draw a card 
     {
+        if (aDeck.Count == 0)
+            return null;
         return (Card)aDeck.Dequeue(); //Dequeue from Deck
     }
 

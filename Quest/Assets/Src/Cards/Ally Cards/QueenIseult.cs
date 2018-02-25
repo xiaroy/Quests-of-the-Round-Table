@@ -24,9 +24,4 @@ public class QueenIseult : AllyCard
         return bidPower = 2;
     }
 
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-    }
-
 }

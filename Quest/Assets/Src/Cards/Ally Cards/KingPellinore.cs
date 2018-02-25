@@ -19,9 +19,4 @@ public class KingPellinore : AllyCard
         return bidPower = 1;
     }
 
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-    }
-
 }

@@ -15,7 +15,7 @@ public class TestCard : AdventureCard
 
     public override Ability[] GetAbilities()
     {
-        return null;
+        return new Ability[] { new TestAbility(this) };
     }
 
     public static string GetTestName(TestTypes type)

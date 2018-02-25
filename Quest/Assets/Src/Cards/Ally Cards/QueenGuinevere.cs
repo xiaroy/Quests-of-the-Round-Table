@@ -10,9 +10,4 @@ public class QueenGuinevere : AllyCard
 
     }
 
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-    }
-
 }

@@ -24,9 +24,4 @@ public class SirTristan : AllyCard
         return battlePoints = 10;
     }
 
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-    }
-
 }

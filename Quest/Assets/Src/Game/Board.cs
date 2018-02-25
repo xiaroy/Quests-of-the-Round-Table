@@ -51,9 +51,12 @@ public class Board : CardSpace<AdventureCard>
 
     public void RemoveAllCardsWithCriteria(CardCriteria criteria)
     {
+        List<AdventureCard> remove = new List<AdventureCard>();
         foreach (AdventureCard card in cardsInPlay)
             if (criteria.DoesMeetCriteria(card))
-                cardsInPlay.Remove(card);
+                remove.Add(card);
+        foreach (AdventureCard card in remove)
+            cardsInPlay.Remove(card);
     }
 }
 

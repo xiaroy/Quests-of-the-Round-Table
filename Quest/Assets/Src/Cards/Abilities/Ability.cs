@@ -16,10 +16,10 @@ public abstract class Ability {
     public abstract bool CanUseAbility(GameState gState, Player sourcePlayer);
     public abstract void UseAbility(GameState gState, Player sourcePlayer);
 
-    public virtual bool DoesTarget() { return false; }
+    public virtual bool DoesTarget(GameState gState) { return false; }
 
-    public virtual bool CanTarget(Object obj) { return false; }
-    public virtual void SetTarget(Object obj) { }
+    public virtual bool CanTarget(GameState state, Targetable obj) { return false; }
+    public virtual void SetTarget(GameState state, Targetable obj) { }
 
     public string GetName() { return name; }
     public AdventureCard getSourceCard() { return sourceCard; }

@@ -18,10 +18,6 @@ public class SirLancelot : AllyCard
         }
         return battlePoints = 15;
     }
-
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-    }
+    
 
 }

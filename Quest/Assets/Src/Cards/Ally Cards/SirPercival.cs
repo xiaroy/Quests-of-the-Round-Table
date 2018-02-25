@@ -19,9 +19,4 @@ public class SirPercival : AllyCard
         return battlePoints = 5;
     }
 
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-    }
-
 }

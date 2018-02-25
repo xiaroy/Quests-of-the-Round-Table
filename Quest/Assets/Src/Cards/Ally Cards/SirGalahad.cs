@@ -8,9 +8,5 @@ public class SirGalahad : AllyCard {
     {
 
     }
-    public override Ability[] GetAbilities()
-    {
-        return null;
-    }
 
 }

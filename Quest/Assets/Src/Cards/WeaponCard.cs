@@ -8,7 +8,7 @@ public class WeaponCard : AdventureCard
 
     public override Ability[] GetAbilities()
     {
-        return null;
+        return new Ability[] { new WeaponAbility(this) };
     }
 
     public static string getWeaponName(WeaponTypes type)

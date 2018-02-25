@@ -7,6 +7,6 @@ public class AmourCard : AdventureCard
 
     public override Ability[] GetAbilities()
     {
-        return null;
+        return new Ability[] { new AmourAbility(this) };
     }
 }

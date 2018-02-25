@@ -19,9 +19,4 @@ public class SirGawain : AllyCard
         return battlePoints = 10;
     }
 
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-    }
-
 }

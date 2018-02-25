@@ -2,15 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoarHunt : MonoBehaviour {
+public class BoarHunt : QuestCard {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public BoarHunt() : base("Boar Hunt", 2, FoeCard.getFoeName(FoeTypes.Boar)) { }
 }

@@ -5,22 +5,108 @@ using System.Linq;
 
 public class GameState {
 
-    private Controller controller;
+    private ControllerHub controller;
 
     private Player[] players;
     private int currentTurnPlayer = 0;
 
     private Deck adventureDeck, storyDeck;
     private StoryCard currentCard;
+    private QuestInfo currentQuest;
 
     GameTime currentTime;
 
-    public void Init()
+    public GameState(int numOfPlayers)
     {
+        players = new Player[numOfPlayers];
+        for (int i = 0; i < numOfPlayers; i++)
+            players[i] = new Player("Player " + i);
 
+        adventureDeck = new Deck();
+        storyDeck = new Deck();
+
+        Init();
     }
 
-    public void setController(Controller controller) { this.controller = controller; }
+    public GameState(Player[] players, Deck adventureDeck, Deck storyDeck)
+    {
+        this.players = players;
+        this.adventureDeck = adventureDeck;
+        this.storyDeck = storyDeck;
+    }
+
+    public void Init()
+    {
+        //Populating the adventure deck
+        for (int i = 0; i < 16; i++)
+            adventureDeck.AddCard(new WeaponCard(WeaponTypes.Sword));
+        for (int i = 0; i < 11; i++)
+            adventureDeck.AddCard(new WeaponCard(WeaponTypes.Horse));
+        for (int i = 0; i < 8; i++)
+            adventureDeck.AddCard(new WeaponCard(WeaponTypes.BattleAx));
+        for (int i = 0; i < 6; i++)
+            adventureDeck.AddCard(new WeaponCard(WeaponTypes.Dagger));
+        for (int i = 0; i < 6; i++)
+            adventureDeck.AddCard(new WeaponCard(WeaponTypes.Lance));
+        for (int i = 0; i < 2; i++)
+            adventureDeck.AddCard(new WeaponCard(WeaponTypes.Excalibur));
+        for (int i = 0; i < 8; i++)
+            adventureDeck.AddCard(new AmourCard());
+        for (int i = 0; i < 8; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.Thieves));
+        for (int i = 0; i < 8; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.SaxonKnight));
+        for (int i = 0; i < 7; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.RobberKnight));
+        for (int i = 0; i < 6; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.EvilKnight));
+        for (int i = 0; i < 5; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.Saxons));
+        for (int i = 0; i < 4; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.Boar));
+        for (int i = 0; i < 4; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.Mordred));
+        for (int i = 0; i < 3; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.BlackKnight));
+        for (int i = 0; i < 2; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.GreenKnight));
+        for (int i = 0; i < 2; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.Giant));
+        for (int i = 0; i < 1; i++)
+            adventureDeck.AddCard(new FoeCard(FoeTypes.Dragon));
+        for (int i = 0; i < 2; i++)
+            adventureDeck.AddCard(new TestCard(TestTypes.Valor));
+        for (int i = 0; i < 2; i++)
+            adventureDeck.AddCard(new TestCard(TestTypes.Temptation));
+        for (int i = 0; i < 2; i++)
+            adventureDeck.AddCard(new TestCard(TestTypes.MorganLeFey));
+        for (int i = 0; i < 2; i++)
+            adventureDeck.AddCard(new TestCard(TestTypes.QuestingBeast));
+        adventureDeck.AddCard(new SirGalahad());
+        adventureDeck.AddCard(new SirLancelot());
+        adventureDeck.AddCard(new KingArthur());
+        adventureDeck.AddCard(new SirTristan());
+        adventureDeck.AddCard(new KingPellinore());
+        adventureDeck.AddCard(new SirGawain());
+        adventureDeck.AddCard(new SirPercival());
+        adventureDeck.AddCard(new QueenGuinevere());
+        adventureDeck.AddCard(new QueenIseult());
+        adventureDeck.AddCard(new Merlin());
+        adventureDeck.Shuffle();
+
+        //Populating the Story deck
+        for (int i = 0; i < 2; i++)
+            storyDeck.AddCard(new BoarHunt());
+        storyDeck.AddCard(new ChivalrousDeed());
+        storyDeck.AddCard(new ProsperityEvent());
+        storyDeck.Shuffle();
+
+        for (int i = 0; i < 12; i++)
+            foreach (Player p in players)
+                p.AddCardToHand((AdventureCard)adventureDeck.Draw());
+    }
+
+    public void setController(ControllerHub controller) { this.controller = controller; }
 
     public void startGame()
     {
@@ -28,6 +114,8 @@ public class GameState {
         while (true)
         {
             currentCard = (StoryCard)storyDeck.Draw();
+            if (currentCard == null)
+                break;
             currentTime = GameTime.InEvent;
             currentCard.doEffect(this);
             currentTime = GameTime.BetweenStories;
@@ -43,15 +131,17 @@ public class GameState {
 
 	public void startQuest(QuestCard qCard)
     {
+        currentCard = qCard;
+
         //Find Sponsor
         currentTime = GameTime.SelectSponor;
         Player sponsor = null;
-        bool[] response = null;
+        ControllerResponse[] response = null;
         for (int i = currentTurnPlayer; i < currentTurnPlayer + players.Length; i++)
         {
             int askPlayer = i % players.Length;
-            response = controller.PromptUserQuestion(new Player[] { players[askPlayer] }, "Would you like to sponsor this Quest?");
-            if (response[0])
+            response = controller.PromptUserInput(new Player[] { players[askPlayer] }, ControllerMessageType.WillSponsor);
+            if (response[0] == ControllerResponse.Yes)
             {
                 sponsor = players[askPlayer];
                 break;
@@ -64,8 +154,8 @@ public class GameState {
 
         //Asking the sponor to set up the quest
         currentTime = GameTime.SelectQuestEnemies;
-        QuestInfo info = new QuestInfo(qCard, sponsor);
-        controller.PromptUserToPlay(new Player[] { sponsor }, "Please set up the Quest");
+        currentQuest = new QuestInfo(qCard, sponsor);
+        controller.PromptUserInput(new Player[] { sponsor }, ControllerMessageType.CreateQuestStages);
 
         //Getting all other not Sponsor player to ask to be in the quest
         currentTime = GameTime.InQuest;
@@ -79,24 +169,29 @@ public class GameState {
             index++;
         }
         //Asking all the not sponsoring players to participate in the quest
-        response = controller.PromptUserQuestion(nonSponsors, "Would you like to participate in this Quest?");
+        response = controller.PromptUserInput(nonSponsors, ControllerMessageType.ParticipateInQuest);
         List<Player> pariticipants = new List<Player>();
         for (int i = 0; i < nonSponsors.Length; i++)
-            if (response[i])
+            if (response[i] == ControllerResponse.Yes)
                 pariticipants.Add(nonSponsors[i]);
         
         //Quest loop to loop for each stage in the quest
-        for (int q = 0; q < info.GetNumberOfStages() && pariticipants.Count > 0; q++)
+        for (int q = 0; q < currentQuest.GetNumberOfStages() && pariticipants.Count > 0; q++)
         {
             //Asking the quest participants if they want to play anything for this stage
             currentTime = GameTime.SelectCardsForQuest;
-            controller.PromptUserToPlay(pariticipants.ToArray(), "Would you like to play anything for this stage?");
+            controller.PromptUserInput(pariticipants.ToArray(), ControllerMessageType.PlayForQuest);
             currentTime = GameTime.InQuest;
 
             //Checking which participants failed the quest
+            List<Player> remove = new List<Player>();
             foreach (Player p in pariticipants)
-                if (p.GetBattlePoints(this) < info.GetBattlePointsForStage(q, this))
-                    pariticipants.Remove(p);
+            {
+                if (p.GetBattlePoints(this) < currentQuest.GetBattlePointsForStage(q, this))
+                    remove.Add(p);
+            }
+            foreach (Player p in remove)
+                pariticipants.Remove(p);
 
             //Giving all the victors an additional card
             foreach (Player p in pariticipants)
@@ -104,7 +199,7 @@ public class GameState {
         }
 
         //Giving the sponor cards equal to the amount of cards they used to sponsor the quest
-        for (int i = 0; i < info.getTotalCardsPlayed() + info.GetNumberOfStages(); i++)
+        for (int i = 0; i < currentQuest.getTotalCardsPlayed() + currentQuest.GetNumberOfStages(); i++)
             sponsor.AddCardToHand((AdventureCard)adventureDeck.Draw());
 
         //Giving successful participants the required shields
@@ -114,6 +209,8 @@ public class GameState {
         //Removing all amour and weapons from each players board
         foreach (Player p in players)
             p.RemoveCardsFromBoardWithCriteria(new EndQuestCardCriteria());
+
+        currentQuest = null;
     }
 
     public void startTournament(TournamentCard tCard)
@@ -170,6 +267,8 @@ public class GameState {
 
     public StoryCard getCurrentStoryCard() { return currentCard; }
 
+    public QuestInfo getCurrentQuest() { return currentQuest; }
+
     /// <summary>
     /// Gets an array of players is order of first place (index 0) to last place (index length - 1)
     /// </summary>
@@ -220,11 +319,6 @@ public class GameState {
     }
 
     public GameTime getCurrentGameTime() { return currentTime; }
-
-    public bool AddCardToQuestInfo(AdventureCard card)
-    {
-        return false;
-    }
 
     private class EndQuestCardCriteria : CardCriteria
     {

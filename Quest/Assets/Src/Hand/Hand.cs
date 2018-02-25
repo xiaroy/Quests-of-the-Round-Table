@@ -31,9 +31,8 @@ public class Hand : CardSpace<AdventureCard>
     */
     public bool AddCard(AdventureCard newCard)
     {
-        //if (cardsInHand.Count >= 12) return false;
+        if (cardsInHand.Count >= 12) return false;
         cardsInHand.Add(newCard);
-        currNumCards++;
         return true;
     }
 
@@ -45,10 +44,7 @@ public class Hand : CardSpace<AdventureCard>
     */
     public bool RemoveCard(AdventureCard remCard)
     {
-        if (!ContainsCard(remCard)) return false;
-        cardsInHand.Remove(remCard);
-        currNumCards--;
-        return true;
+        return cardsInHand.Remove(remCard);
     }
 
     /*

@@ -10,10 +10,4 @@ public class Merlin : AllyCard
 
     }
 
-    public override Ability[] GetAbilities() //no ability
-    {
-        return null;
-        //not yet implemented
-    }
-
 }

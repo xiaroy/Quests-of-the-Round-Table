@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-public abstract class Player {
+public class Player {
 
     protected string name;
     protected Rank rank;
@@ -77,5 +77,18 @@ public abstract class Player {
     public int GetMaximumBids(GameState state)
     {
         return board.getBoardFreeBids(state) + hand.GetTotalBids(state);
+    }
+
+    public override string ToString()
+    {
+        string str = name;
+        str += "\n\tRank: " + rank.getCurrentRank() + ", " + rank.getCurrentShields();
+        str += "\n\tHand: ";
+        foreach (AdventureCard card in hand.GetCards())
+            str += card.getName() + ", ";
+        str += "\n\tBoard: ";
+        foreach (AdventureCard card in board.GetCards())
+            str += card.getName() + ", ";
+        return str + "\n";
     }
 }

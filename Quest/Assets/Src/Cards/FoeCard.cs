@@ -25,7 +25,7 @@ public class FoeCard : AdventureCard
 
     public override Ability[] GetAbilities()
     {
-        return null;
+        return new Ability[] { new FoeAbility(this) };
     }
 
     public static string getFoeName(FoeTypes name)
