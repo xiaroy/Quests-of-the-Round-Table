@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VanquishKingArthur'sEnemies : MonoBehaviour {
+public class VanquishKingArthursEnemies : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

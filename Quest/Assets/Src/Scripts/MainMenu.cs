@@ -11,6 +11,19 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene("board",LoadSceneMode.Single);
     }
+
+    public void ThreePlayerGame()
+    {
+        SceneManager.LoadScene("twoPlayers", LoadSceneMode.Single);
+
+    }
+
+    public void FourPlayerGame()
+    {
+        SceneManager.LoadScene("threePlayers", LoadSceneMode.Single);
+
+    }
+
     public void Back()
     {
         SceneManager.LoadScene("beginning", LoadSceneMode.Single);

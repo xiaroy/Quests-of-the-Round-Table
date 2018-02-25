@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class King'sCalltoArms : MonoBehaviour {
+public class KingsCalltoArms : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
