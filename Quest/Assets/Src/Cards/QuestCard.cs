@@ -8,7 +8,7 @@ public abstract class QuestCard : StoryCard
     protected int stages;
     protected string specialEnemy;
 
-    public QuestCard(string name, int stages, string specialEnemy = null) : base(name, CardTypes.Quest)
+    public QuestCard(string name, int stages, string specialEnemy) : base(name, CardTypes.Quest)
     {
         this.stages = stages;
         this.reward = stages;

@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VanquishKingArthurEnemies : MonoBehaviour {
+public class VanquishKingArthursEnemies : QuestCard
+{
+    public VanquishKingArthursEnemies() : base("Vanquish King Arthur's Enemies", 3, null)
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
 }

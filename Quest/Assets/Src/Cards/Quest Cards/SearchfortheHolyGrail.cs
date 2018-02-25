@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchfortheHolyGrail : MonoBehaviour {
+public class SearchfortheHolyGrail : QuestCard
+{
+    public SearchfortheHolyGrail() : base("Search for the Holy Grail", 5, null) //all
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
 }

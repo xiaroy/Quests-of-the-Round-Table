@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JourneythroughtheEnchantedForest : MonoBehaviour {
+public class JourneythroughtheEnchantedForest : QuestCard {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public JourneythroughtheEnchantedForest() : base("Journey through the Enchanted Forest", 3, "EvilKnight") {
+
+    }
+
 }
