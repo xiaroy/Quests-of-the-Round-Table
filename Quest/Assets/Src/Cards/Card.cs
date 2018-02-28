@@ -23,7 +23,7 @@ public abstract class Card {
     /// Gets the type of card this is
     /// </summary>
     /// <returns>The type of card this is</returns>
-    public CardTypes getType() { return type; }
+    public CardTypes GetCardType() { return type; }
 }
 
 public enum CardTypes

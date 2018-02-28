@@ -14,7 +14,7 @@ public class FoeCard : AdventureCard
 
     public override int getBattlePoints(GameState gState)
     {
-        if (gState.getCurrentStoryCard().getType() == CardTypes.Quest)
+        if (gState.getCurrentStoryCard().GetCardType() == CardTypes.Quest)
         {
             QuestCard curQuest = (QuestCard)gState.getCurrentStoryCard();
             if (curQuest.getSpecialEnemy().Equals(this.getName()))

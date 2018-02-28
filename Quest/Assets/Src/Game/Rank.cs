@@ -132,6 +132,22 @@ public class Rank {
     {
         return base.GetHashCode();
     }
+
+    public static string GetRankString(Ranks rank)
+    {
+        switch (rank)
+        {
+            case Ranks.Squire:
+                return "Squire";
+            case Ranks.Knight:
+                return "Knight";
+            case Ranks.ChampionKnight:
+                return "Champion Knight";
+            case Ranks.KnightOfRoundTable:
+                return "Knight of the Round Table";
+        }
+        return "Unkown";
+    }
 }
 
 

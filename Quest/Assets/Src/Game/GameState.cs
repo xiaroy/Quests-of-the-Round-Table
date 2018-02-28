@@ -116,6 +116,7 @@ public class GameState {
             currentCard = (StoryCard)storyDeck.Draw();
             if (currentCard == null)
                 break;
+            Debug.Log(currentCard.getName() + " was drawn");
             currentTime = GameTime.InEvent;
             currentCard.doEffect(this);
             currentTime = GameTime.BetweenStories;
@@ -129,9 +130,10 @@ public class GameState {
         }
     }
 
-	public void startQuest(QuestCard qCard)
+    public void startQuest(QuestCard qCard)
     {
         currentCard = qCard;
+        currentQuest = new QuestInfo(qCard);
 
         //Find Sponsor
         currentTime = GameTime.SelectSponor;
@@ -144,18 +146,31 @@ public class GameState {
             if (response[0] == ControllerResponse.Yes)
             {
                 sponsor = players[askPlayer];
+                Debug.Log(sponsor.getName() + " choose to sponsor");
                 break;
             }
+            Debug.Log(players[askPlayer].getName() + " declined to sponsor");
         }
 
         //Check if anyone sponsored the quest
-        if (sponsor == null)
+        if (sponsor == null) {
+            currentQuest = null;
             return;
+        }
 
         //Asking the sponor to set up the quest
         currentTime = GameTime.SelectQuestEnemies;
-        currentQuest = new QuestInfo(qCard, sponsor);
+        currentQuest.SetSponsor(sponsor);
         controller.PromptUserInput(new Player[] { sponsor }, ControllerMessageType.CreateQuestStages);
+
+        //Logging all the cards in this quest
+        for (int i = 0; i < currentQuest.GetNumberOfStages(); i++)
+        {
+            string str = "Stage " + i + "\n\t";
+            foreach (AdventureCard card in currentQuest.GetCardsForStage(i))
+                str += card.getName() + ", ";
+            Debug.Log(str);
+        }
 
         //Getting all other not Sponsor player to ask to be in the quest
         currentTime = GameTime.InQuest;
@@ -172,12 +187,19 @@ public class GameState {
         response = controller.PromptUserInput(nonSponsors, ControllerMessageType.ParticipateInQuest);
         List<Player> pariticipants = new List<Player>();
         for (int i = 0; i < nonSponsors.Length; i++)
+        {
             if (response[i] == ControllerResponse.Yes)
+            {
+                Debug.Log(nonSponsors[i].getName() + " has joined the quest");
                 pariticipants.Add(nonSponsors[i]);
+            }
+            else Debug.Log(nonSponsors[i].getName() + " declined the quest");
+        }
         
         //Quest loop to loop for each stage in the quest
         for (int q = 0; q < currentQuest.GetNumberOfStages() && pariticipants.Count > 0; q++)
         {
+            currentQuest.setCurStage(q);
             //Asking the quest participants if they want to play anything for this stage
             currentTime = GameTime.SelectCardsForQuest;
             controller.PromptUserInput(pariticipants.ToArray(), ControllerMessageType.PlayForQuest);
@@ -185,13 +207,20 @@ public class GameState {
 
             //Checking which participants failed the quest
             List<Player> remove = new List<Player>();
-            foreach (Player p in pariticipants)
+            for (int i = pariticipants.Count - 1; i >= 0; i--)
             {
-                if (p.GetBattlePoints(this) < currentQuest.GetBattlePointsForStage(q, this))
-                    remove.Add(p);
+                string str = pariticipants[i].getName() + "\n\t";
+                foreach (AdventureCard card in pariticipants[i].getPlayersBoard())
+                    str += card.getName() + ", ";
+                Debug.Log(str);
+
+                if (pariticipants[i].GetBattlePoints(this) < currentQuest.GetBattlePointsForStage(q, this))
+                {
+                    Debug.Log(pariticipants[i].getName() + " fail the failed");
+                    pariticipants.RemoveAt(i);
+                }
+                else Debug.Log(pariticipants[i].getName() + " continues the quest");
             }
-            foreach (Player p in remove)
-                pariticipants.Remove(p);
 
             //Giving all the victors an additional card
             foreach (Player p in pariticipants)
@@ -204,7 +233,10 @@ public class GameState {
 
         //Giving successful participants the required shields
         foreach (Player p in pariticipants)
+        {
+            Debug.Log(p.getName() + " won the quest");
             p.AddShields(qCard.getReward());
+        }
 
         //Removing all amour and weapons from each players board
         foreach (Player p in players)
@@ -324,7 +356,7 @@ public class GameState {
     {
         public bool DoesMeetCriteria(Card card)
         {
-            return (card.getType() == CardTypes.Amour || card.getType() == CardTypes.Weapon);
+            return (card.GetCardType() == CardTypes.Amour || card.GetCardType() == CardTypes.Weapon);
         }
     }
 }

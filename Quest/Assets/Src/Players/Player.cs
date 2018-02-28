@@ -45,6 +45,7 @@ public class Player {
 
     public Rank GetRank() { return rank; }
 
+    public bool CanPlayCardToBoard(AdventureCard card) { return board.CanAddCard(card); }
 
     public bool AddCardToHand(AdventureCard card) { return hand.AddCard(card); }
     public bool AddCardToBoard(AdventureCard card) { return board.AddCard(card); }

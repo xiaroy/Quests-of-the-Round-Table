@@ -8,7 +8,21 @@ public class Board : CardSpace<AdventureCard>
 
     public bool AddCard(AdventureCard card)
     {
-        cardsInPlay.Add(card);
+        if (CanAddCard(card))
+        {
+            cardsInPlay.Add(card);
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanAddCard(AdventureCard card)
+    {
+        foreach (AdventureCard c in cardsInPlay)
+        {
+            if (card.getName().Equals(c.getName()))
+                return false;
+        }
         return true;
     }
 
@@ -36,8 +50,7 @@ public class Board : CardSpace<AdventureCard>
     {
         int totalBP = 0;
         foreach (AdventureCard card in cardsInPlay)
-            if (!(state.getCurrentGameTime() == GameTime.InTournament && card.getType() == CardTypes.Ally))
-                totalBP += card.getBattlePoints(state);
+            totalBP += card.getBattlePoints(state);
         return totalBP;
     }
 
