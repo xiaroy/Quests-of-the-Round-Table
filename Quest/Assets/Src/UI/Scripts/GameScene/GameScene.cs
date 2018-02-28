@@ -1,40 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameScene : MonoBehaviour {
 
-    Transform oppArea;
+    public Transform oppArea;
+    public Transform playerBoard;
 
-    InfoPanel infoPanel;
-    PlayerPanel playerPanel;
-    PlayerPanel[] oppPanels;
-    StoryPanel storyPanel;
+    BoardScript[] oppBoardScript;
+    BoardScript playerBoardScript;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public Transform playerHand;
+    public Transform currentStoryCard;
+    public Text gameMsgText;
+    public Transform gameMsgButtonBox;
+    
+    public ObjectPool boardPool;
+
+
+    // Use this for initialization
+    void Start () {
+        CreateScreen(3);
+    }
+
+    public void CreateScreen(int numberOfOpp)
+    {
+        oppBoardScript = new BoardScript[numberOfOpp];
+        playerBoardScript = playerBoard.GetComponent<BoardScript>();
+
+        for (int i = 0; i < numberOfOpp; i++)
+        {
+            GameObject newBoard = boardPool.GetObject();
+            newBoard.transform.SetParent(oppArea);
+            
+            oppBoardScript[i] = newBoard.GetComponent<BoardScript>();
+            oppBoardScript[i].Resize(oppArea.GetComponent<RectTransform>().sizeDelta.x / numberOfOpp, oppArea.GetComponent<RectTransform>().sizeDelta.y);
+            //oppBoardScript[i].Setup(item, this);
+        }
+    }
 
     public void Setup(GameView view)
     {
-        infoPanel.Setup(view.GetPerspectiveHand(), view.GetPerspectiveName(), view.GetPerspectiveRank());
-        playerPanel.Setup(view.GetPerspectiveBoard(), view.GetPerspectiveName(), view.GetPerspectiveRank(), view.GetPerspectiveHand().Length, false);
-
-        for (int i = 0; i < oppPanels.Length && i < view.NumberOfOtherPlayers(); i++)
-            oppPanels[i].Setup(view.GetOtherPlayerBoard(i), view.GetOtherPlayerName(i), view.GetOtherPlayerRank(i), view.GetOtherPlayerHandCount(i), true);
-
-        //storyPanel.updateFields();
+        
     }
 
     public void UpdateView(GameView view)
     {
-        infoPanel.UpdateFields(view.GetPerspectiveHand(), view.GetPerspectiveRank());
-        playerPanel.UpdateFields(view.GetPerspectiveBoard(), view.GetPerspectiveRank());
-
-        for (int i = 0; i < oppPanels.Length && i < view.NumberOfOtherPlayers(); i++)
-            oppPanels[i].UpdateFields(view.GetOtherPlayerBoard(i), view.GetOtherPlayerRank(i));
-
-        //storyPanel.updateFields();
+        
     }
 }

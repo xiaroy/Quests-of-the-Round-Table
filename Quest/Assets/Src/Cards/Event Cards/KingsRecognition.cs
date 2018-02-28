@@ -19,7 +19,7 @@ public class KingsRecognition : EventCard
         {
             if (player.GetRank() == players[players.Length - 1].GetRank())
             {
-                lowest[i] = players[players.Length - 1];
+                //lowest[i] = players[players.Length - 1];
                 i = i + 1;
             }
         }
