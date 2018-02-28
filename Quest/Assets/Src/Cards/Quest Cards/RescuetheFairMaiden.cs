@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RescuetheFairMaiden : QuestCard
 {
-    public RescuetheFairMaiden() : base("Rescue the Fair Maiden", 3, "BlackKnight")
+    public RescuetheFairMaiden() : base("Rescue the Fair Maiden", 3, new string[] { "BlackKnight" })
     {
 
     }
