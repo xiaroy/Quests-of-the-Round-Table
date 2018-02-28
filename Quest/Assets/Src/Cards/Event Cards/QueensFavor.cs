@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingsRecognition : EventCard
+public class QueensFavor : EventCard
 {
-    public KingsRecognition() : base("King's Recognition")
+
+    public QueensFavor() : base("Queen's Favor")
     {
 
     }
 
     public override void doEffect(GameState gState)
     {
+        //initialization;
         Player[] players = gState.getPlayersInRankOrder();
-        Player[] completequest = new Player[4];
-        int i = 0;
+        Player[] lowest = new Player[4];
+        int i = 1;
+        lowest[0] = players[players.Length - 1];
 
+        //find lowest and put in lowest
         foreach (Player player in gState.getPlayers())
         {
             if (player.GetRank() == players[players.Length - 1].GetRank())
@@ -22,6 +26,13 @@ public class KingsRecognition : EventCard
                 lowest[i] = players[players.Length - 1];
                 i = i + 1;
             }
+        }
+
+        //add 2 adventure cards for lowest
+        foreach (Player p in lowest)
+        {
+            for (int j = 0; j < 2; j++)
+                p.AddCardToHand((AdventureCard)gState.getAdventureDeck().Draw());
         }
     }
 }
