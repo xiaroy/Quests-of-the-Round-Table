@@ -10,7 +10,7 @@ public class AIQuestStrategy2 : AIQuestStrategy
         AllyCard alCard = null;
         AmourCard amCard = null;
 
-        //Searching players hand for valid cards to play
+        //Searching players list for valid cards to play
         foreach (AdventureCard card in player.getPlayersCards())
         {
             if (card.getBattlePoints(state) >= 10 && player.CanPlayCardToBoard(card))
@@ -43,13 +43,13 @@ public class AIQuestStrategy2 : AIQuestStrategy
     {
         //Creating counters for the amount of foes and valid cards to play
         int counter = 0, foes = 0;
-        //Looping through all the cards in the players hand
+        //Looping through all the cards in the players list
         foreach (AdventureCard card in player.getPlayersCards())
         {
             //Checking if this card is a foe card
             if (card.GetCardType() == CardTypes.Foe)
                 foes++;
-            //Checking if this is a valid card to play(needs to check for recurring cards in hand that aren't currently in play)
+            //Checking if this is a valid card to play(needs to check for recurring cards in list that aren't currently in play)
             else if (card.getBattlePoints(state) >= 10 && player.CanPlayCardToBoard(card))
                 counter++;
 

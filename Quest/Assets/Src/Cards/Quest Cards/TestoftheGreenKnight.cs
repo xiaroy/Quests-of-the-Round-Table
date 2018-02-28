@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestoftheGreenKnight : QuestCard
 {
-    public TestoftheGreenKnight() : base("Test of the Green Knight", 3, "GreenKnight")
+    public TestoftheGreenKnight() : base("Test of the Green Knight", 3, new string[] { "GreenKnight" } )
     {
 
     }

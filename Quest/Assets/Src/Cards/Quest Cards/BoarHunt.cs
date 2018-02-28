@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoarHunt : QuestCard
 {
-    public BoarHunt() : base("Boar Hunt", 2, "boar")
+    public BoarHunt() : base("Boar Hunt", 2, new string[]{"Boar"})
     {
 
     }

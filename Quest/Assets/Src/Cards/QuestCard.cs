@@ -6,9 +6,9 @@ public abstract class QuestCard : StoryCard
 {
     protected int reward;
     protected int stages;
-    protected string specialEnemy;
+    protected string[] specialEnemy = new string[11];
 
-    public QuestCard(string name, int stages, string specialEnemy) : base(name, CardTypes.Quest)
+    public QuestCard(string name, int stages, string[] specialEnemy) : base(name, CardTypes.Quest)
     {
         this.stages = stages;
         this.reward = stages;
@@ -17,7 +17,7 @@ public abstract class QuestCard : StoryCard
 
     public int getReward() { return reward; }
     public int getStages() { return stages; }
-    public string getSpecialEnemy() { return specialEnemy; }
+    public string[] getSpecialEnemy() { return specialEnemy;}
 
     public override void doEffect(GameState gState)
     {

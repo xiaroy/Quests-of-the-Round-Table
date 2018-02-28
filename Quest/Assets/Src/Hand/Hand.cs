@@ -15,7 +15,7 @@ public class Hand : CardSpace<AdventureCard>
 
     /*
         Function : contains
-        Purpose  : checks if card exist in hand 
+        Purpose  : checks if card exist in list 
         Return   : 0 if card not found, 1 if card found
     */
     public bool ContainsCard(AdventureCard card)
@@ -25,7 +25,7 @@ public class Hand : CardSpace<AdventureCard>
 
     /*
         Function : addCard
-        Purpose  : adds new Adventure card to Player's hand
+        Purpose  : adds new Adventure card to Player's list
                     if the current amount of card held is less than 13
         Return   : 0 if card not added, 1 if card added
     */
@@ -38,7 +38,7 @@ public class Hand : CardSpace<AdventureCard>
 
     /*
         Function : removeCard
-        Purpose  : removes Adventure card to Player's hand
+        Purpose  : removes Adventure card to Player's list
                     if the current amount of card held is less than 13
         Return   : 0 if card not removed, 1 if card removed
     */
@@ -49,7 +49,7 @@ public class Hand : CardSpace<AdventureCard>
 
     /*
         Function : revealHand
-        Purpose  : returns all cards currently in player's hand 
+        Purpose  : returns all cards currently in player's list 
         Return   : List of Cards
     */
     public AdventureCard[] GetCards()

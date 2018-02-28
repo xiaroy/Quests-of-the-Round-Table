@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JourneythroughtheEnchantedForest : QuestCard {
 
-    public JourneythroughtheEnchantedForest() : base("Journey through the Enchanted Forest", 3, "EvilKnight") {
+    public JourneythroughtheEnchantedForest() : base("Journey through the Enchanted Forest", 3, new string[] { "EvilKnight" }) {
 
     }
 

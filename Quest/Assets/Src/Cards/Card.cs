@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
-public abstract class Card {
+[System.Serializable]
+public abstract class Card : MonoBehaviour{
 
-    protected string name;
+    public string name;
     protected CardTypes type;
     public Sprite artwork;
 
