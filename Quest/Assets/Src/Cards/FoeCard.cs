@@ -17,8 +17,11 @@ public class FoeCard : AdventureCard
         if (gState.getCurrentStoryCard().GetCardType() == CardTypes.Quest)
         {
             QuestCard curQuest = (QuestCard)gState.getCurrentStoryCard();
-            if (curQuest.getSpecialEnemy().Equals(this.getName()))
+            for (int i = 0; i < curQuest.getSpecialEnemy().Length; i++)
+            {
+                if (curQuest.getSpecialEnemy()[i].Equals(this.getName()))
                 return highBattlePoint;
+            }
         }
         return battlePoints;
     }

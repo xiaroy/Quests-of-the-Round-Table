@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlaytheDragon : QuestCard
 {
-    public SlaytheDragon() : base("Slay the Dragon", 3, "Dragon")
+    public SlaytheDragon() : base("Slay the Dragon", 3, new string[] { "Dragon" })
     {
 
     }
