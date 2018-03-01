@@ -65,7 +65,7 @@ public class ObjectPool : MonoBehaviour
 }
 
 // a component that simply identifies the pool that a GameObject came from
-public class PooledObject : MonoBehaviour
+/*public class PooledObject : MonoBehaviour
 {
     public ObjectPool pool;
-}
+}*/
