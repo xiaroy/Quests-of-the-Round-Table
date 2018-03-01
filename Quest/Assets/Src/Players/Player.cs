@@ -4,7 +4,8 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-public class Player {
+[System.Serializable]
+public class Player : MonoBehaviour {
 
     protected string name;
     protected Rank rank;
@@ -32,7 +33,7 @@ public class Player {
         board = new Board();
     }
     //getters
-    public string getName() { return name; }
+    public string GetName() { return name; }
 
     public AdventureCard[] getPlayersCards() { return hand.GetCards(); }
 

@@ -133,7 +133,7 @@ public class Rank {
         return base.GetHashCode();
     }
 
-    public static string GetRankString(Ranks rank)
+    public string GetRankString(Ranks rank)
     {
         switch (rank)
         {
