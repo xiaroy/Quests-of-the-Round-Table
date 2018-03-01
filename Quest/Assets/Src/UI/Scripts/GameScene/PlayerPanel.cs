@@ -19,13 +19,13 @@ public class PlayerPanel : MonoBehaviour {
     public void Setup(Card[] cards, string name, Rank rank, int handCardCount, bool displayRank)
     {
         nameText.text = name;
-        rankText.text = "Rank: " + Rank.GetRankString(rank.getCurrentRank());
+        //rankText.text = "Rank: " + Rank.GetRankString(rank.getCurrentRank());
         shieldText.text = "Sheilds: " + rank.getCurrentShields();
     }
 
     public void UpdateFields(Card[] cards, Rank rank)
     {
-        rankText.text = "Rank: " + Rank.GetRankString(rank.getCurrentRank());
+  
         shieldText.text = "Sheilds: " + rank.getCurrentShields();
     }
 }

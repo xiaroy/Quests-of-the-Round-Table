@@ -18,7 +18,7 @@ public class GameScene : MonoBehaviour {
 
     public void Setup(GameView view)
     {
-        infoPanel.Setup(view.GetPerspectiveHand(), view.GetPerspectiveName(), view.GetPerspectiveRank());
+        //infoPanel.Setup(view.GetPerspectiveHand(), view.GetPerspectiveName(), view.GetPerspectiveRank());
         playerPanel.Setup(view.GetPerspectiveBoard(), view.GetPerspectiveName(), view.GetPerspectiveRank(), view.GetPerspectiveHand().Length, false);
 
         for (int i = 0; i < oppPanels.Length && i < view.NumberOfOtherPlayers(); i++)
@@ -29,7 +29,7 @@ public class GameScene : MonoBehaviour {
 
     public void UpdateView(GameView view)
     {
-        infoPanel.UpdateFields(view.GetPerspectiveHand(), view.GetPerspectiveRank());
+       // infoPanel.UpdateFields(view.GetPerspectiveHand(), view.GetPerspectiveRank());
         playerPanel.UpdateFields(view.GetPerspectiveBoard(), view.GetPerspectiveRank());
 
         for (int i = 0; i < oppPanels.Length && i < view.NumberOfOtherPlayers(); i++)

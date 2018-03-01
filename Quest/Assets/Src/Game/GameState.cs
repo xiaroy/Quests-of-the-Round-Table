@@ -146,10 +146,10 @@ public class GameState {
             if (response[0] == ControllerResponse.Yes)
             {
                 sponsor = players[askPlayer];
-                Debug.Log(sponsor.getName() + " choose to sponsor");
+                Debug.Log(sponsor.GetName() + " choose to sponsor");
                 break;
             }
-            Debug.Log(players[askPlayer].getName() + " declined to sponsor");
+            Debug.Log(players[askPlayer].GetName() + " declined to sponsor");
         }
 
         //Check if anyone sponsored the quest
@@ -190,10 +190,10 @@ public class GameState {
         {
             if (response[i] == ControllerResponse.Yes)
             {
-                Debug.Log(nonSponsors[i].getName() + " has joined the quest");
+                Debug.Log(nonSponsors[i].GetName() + " has joined the quest");
                 pariticipants.Add(nonSponsors[i]);
             }
-            else Debug.Log(nonSponsors[i].getName() + " declined the quest");
+            else Debug.Log(nonSponsors[i].GetName() + " declined the quest");
         }
         
         //Quest loop to loop for each stage in the quest
@@ -209,17 +209,17 @@ public class GameState {
             List<Player> remove = new List<Player>();
             for (int i = pariticipants.Count - 1; i >= 0; i--)
             {
-                string str = pariticipants[i].getName() + "\n\t";
+                string str = pariticipants[i].GetName() + "\n\t";
                 foreach (AdventureCard card in pariticipants[i].getPlayersBoard())
                     str += card.getName() + ", ";
                 Debug.Log(str);
 
                 if (pariticipants[i].GetBattlePoints(this) < currentQuest.GetBattlePointsForStage(q, this))
                 {
-                    Debug.Log(pariticipants[i].getName() + " fail the failed");
+                    Debug.Log(pariticipants[i].GetName() + " fail the failed");
                     pariticipants.RemoveAt(i);
                 }
-                else Debug.Log(pariticipants[i].getName() + " continues the quest");
+                else Debug.Log(pariticipants[i].GetName() + " continues the quest");
             }
 
             //Giving all the victors an additional card
@@ -234,7 +234,7 @@ public class GameState {
         //Giving successful participants the required shields
         foreach (Player p in pariticipants)
         {
-            Debug.Log(p.getName() + " won the quest");
+            Debug.Log(p.GetName() + " won the quest");
             p.AddShields(qCard.getReward());
         }
 

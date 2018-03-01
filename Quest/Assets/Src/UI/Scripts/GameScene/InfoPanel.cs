@@ -12,7 +12,7 @@ public class InfoPanel : MonoBehaviour {
     Text rankText;
     Text shieldText;
 
-    public void Setup(Card[] cards, string name, Rank rank)
+   /* public void Setup(Card[] cards, string name, Rank rank)
     {
         nameText.text = name;
         rankText.text = "Rank: " + Rank.GetRankString(rank.getCurrentRank());
@@ -23,5 +23,5 @@ public class InfoPanel : MonoBehaviour {
     {
         rankText.text = "Rank: " + Rank.GetRankString(rank.getCurrentRank());
         shieldText.text = "Sheilds: " + rank.getCurrentShields();
-    }
+    }*/
 }

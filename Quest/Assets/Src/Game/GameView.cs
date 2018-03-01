@@ -19,7 +19,7 @@ public class GameView
                 continue;
             others[i] = new OtherPlayer
             {
-                name = player.getName(),
+                name = player.GetName(),
                 board = player.getPlayersBoard(),
                 cardsInHand = player.getPlayersCards().Length,
                 rank = player.GetRank()
@@ -41,7 +41,7 @@ public class GameView
     {
         if (perspective == null)
             return others[0].name;
-        return perspective.getName();
+        return perspective.GetName();
     }
     public Card[] GetPerspectiveHand()
     {
