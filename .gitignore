@@ -25,6 +25,27 @@ ExportedObj/
 *.booproj
 .vs
 
+# ============== #
+# Java Generated #
+# ============== #
+*.jar
+*.class
+
+# ================= #
+# Eclipse Generated #
+# ================= #
+.metadata
+.recommenders
+.settings/
+bin/
+.classpath
+.project
+
+# =============== #
+# Maven Generated #
+# =============== #
+target/
+
 # ============ #
 # OS generated #
 # ============ #
@@ -36,3 +57,10 @@ ExportedObj/
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# ==== #
+# Misc #
+# ==== #
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag

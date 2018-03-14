@@ -28,7 +28,7 @@ public class ObjectPool : MonoBehaviour
             spawnedGameObject = (GameObject)GameObject.Instantiate(prefab);
 
             // add the PooledObject component to the prefab so we know it came from this pool
-            PooledObject pooledObject = spawnedGameObject.AddComponent<PooledObject>();
+            PooledObject1 pooledObject = spawnedGameObject.AddComponent<PooledObject1>();
             pooledObject.pool = this;
         }
 
@@ -65,7 +65,7 @@ public class ObjectPool : MonoBehaviour
 }
 
 // a component that simply identifies the pool that a GameObject came from
-/*public class PooledObject : MonoBehaviour
+public class PooledObject1 : MonoBehaviour
 {
     public ObjectPool pool;
-}*/
+}

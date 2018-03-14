@@ -20,7 +20,7 @@ public class SampleText : MonoBehaviour {
     {
         name.text = player.GetName();
         rankss = player.GetRank();
-        rank.text = rankss.GetRankString(rankss.getCurrentRank());
+        rank.text = Rank.GetRankString(rankss.getCurrentRank());
 
         noShields.text = rankss.getCurrentShields().ToString();
 
