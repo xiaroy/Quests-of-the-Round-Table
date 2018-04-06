@@ -1,4 +1,4 @@
-package test.spring;
+package server.messages;
 
 import view.GameView;
 
@@ -35,17 +35,6 @@ public class BoardMessage {
 		public CardMessage[] getBoard() { return board; }
 	}
 	
-	public class CardMessage {
-		private String name;
-		private String address;
-		
-		public void setName(String name) { this.name = name; }
-		public String getName() { return name; }
-		
-		public void setAddress(String address) { this.address = address; }
-		public String getAddress() { return address; }
-	}
-	
 	public void createMessage(GameView view) { 
 		name = view.GetPerspectiveName();
 		rank = view.GetPerspectiveRank().getCurrentRank().toString();
@@ -53,14 +42,12 @@ public class BoardMessage {
 		hand = new CardMessage[view.GetPerspectiveHand().length];
 		for (int i = 0; i < hand.length; i++) {
 			hand[i] = new CardMessage();
-			hand[i].setName(view.GetPerspectiveHand()[i].getName());
-			hand[i].setAddress("img/" + view.GetPerspectiveHand()[i].GetCardType() + "/" + view.GetPerspectiveHand()[i].getName() + ".png");
+			hand[i].setCard(view.GetPerspectiveHand()[i]);
 		}
 		board = new CardMessage[view.GetPerspectiveBoard().length];
-		for (int i = 0; i < hand.length; i++) {
+		for (int i = 0; i < board.length; i++) {
 			board[i] = new CardMessage();
-			board[i].setName(view.GetPerspectiveBoard()[i].getName());
-			board[i].setAddress("img/" + view.GetPerspectiveBoard()[i].GetCardType() + "/" + view.GetPerspectiveBoard()[i].getName() + ".png");
+			board[i].setCard(view.GetPerspectiveBoard()[i]);
 		}
 		
 		opponents = new OpponentMessage[view.NumberOfOtherPlayers()];
@@ -74,8 +61,7 @@ public class BoardMessage {
 			CardMessage[] oppBoard = new CardMessage[view.GetOtherPlayerBoard(i).length];
 			for (int j = 0; j < oppBoard.length; j++) {
 				oppBoard[j] = new CardMessage();
-				oppBoard[j].setName(view.GetOtherPlayerBoard(i)[j].getName());
-				oppBoard[j].setAddress("img/" + view.GetOtherPlayerBoard(i)[j].GetCardType() + "/" + view.GetOtherPlayerBoard(i)[j].getName() + ".png");
+				oppBoard[j].setCard(view.GetOtherPlayerBoard(i)[j]);
 			}
 			opponents[i].setBoard(oppBoard);
 		}

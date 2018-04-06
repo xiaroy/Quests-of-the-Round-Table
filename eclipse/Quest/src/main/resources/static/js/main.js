@@ -74,19 +74,19 @@ function onMessageReceived(payload) {
 
     if(message.type === 'JOIN') {
         messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!' + message.cards[0].name + " " + message.cards.length;//[0] + "" + message.stuff[1];
+        message.content = message.sender + ' joined!';
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' left!';
     } else {
         messageElement.classList.add('chat-message');
 
-        var avatarElement = document.createElement('img');
-		avatarElement.src = "img/" + message.cards[0].name;
-		avatarElement.style = "width:50px;height:80px;"
-        //var avatarText = document.createTextNode(message.sender[0]);
-        //avatarElement.appendChild(avatarText);
-        //avatarElement.style['background-color'] = getAvatarColor(message.sender);
+        var avatarElement = document.createElement('i');
+		//avatarElement.src = "img/" + message.cards[0].name;
+		//avatarElement.style = "width:50px;height:80px;"
+        var avatarText = document.createTextNode(message.sender[0]);
+        avatarElement.appendChild(avatarText);
+        avatarElement.style['background-color'] = getAvatarColor(message.sender);
 
         messageElement.appendChild(avatarElement);
 
