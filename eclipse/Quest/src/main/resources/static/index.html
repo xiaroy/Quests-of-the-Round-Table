@@ -23,12 +23,57 @@
             </form>
         </div>
     </div>
-
-    <div id="chat-page" class="hidden">
-        <div class="chat-container">
-            <div class="chat-header">
-                <h2>Spring WebSocket Chat Demo</h2>
+	
+	<!-- screen div -->
+    <div id="game-page" class="hidden">
+        <!-- 66% first vertical div (Game) -->
+        <div class="DivGameArea">
+            <div class="container0">
+                <div class="toppaneQuest">quests of the round table</div>
             </div>
+
+            <!-- textboxes for opponent info -->
+            <div class="DivOppArea"></div>
+            
+            <!-- self text area -->
+            <div class="DivPlayArea">
+                <textbox class="txtName"> Name </textbox>
+                <textbox class="txtHand"> Card </textbox>
+                <textbox class="txtRank"> Rank </textbox>
+                <textbox class="txtShield"> Shield </textbox>
+                <div class="DivFieldArea"><!--Self Card Play Zone--></div>
+            </div>
+
+            <!-- self display area -->
+            
+            <div class="DivHandArea">
+                <!--<div class="selfCardArea">Self Card Display Area</div>-->
+            </div>
+        </div>
+
+
+        <!-- 33% second div (quest info) -->
+        <div class="DivQuestInfoArea">
+            <div class="toppaneOther">Quest Information</div>
+            <!-- display current quest area -->
+            <div class="DivCurStoryCard"></div>
+            
+            <!-- ?blank space in middle -->
+            <div class="DivQuestStages">
+                <textbox class="stageDisplay"> stage 1</textbox>
+                <button class="buttonPrev">Prev</button>
+                <button class="buttonNext">Next</button>
+            </div>
+            
+            <!-- control section -->
+            <div class="DivInput">
+                <button class="buttonCont">Control</button>
+            </div>
+        </div>
+
+        <!-- 33% third div (chat) -->
+        <div class="DivChatArea">
+            <div class="toppaneOther">Chat</div>
             <div class="connecting">
                 Connecting...
             </div>
@@ -43,8 +88,8 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
+		</div>
+	</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>

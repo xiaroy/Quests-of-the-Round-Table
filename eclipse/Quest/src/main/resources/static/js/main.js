@@ -1,8 +1,31 @@
 'use strict';
 
 var usernamePage = document.querySelector('#username-page');
-var chatPage = document.querySelector('#chat-page');
+var gamePage = document.querySelector('#game-page');
+
 var usernameForm = document.querySelector('#usernameForm');
+
+var divSelfFieldArea = document.querySelector('.DivPlayArea');
+var divOppArea = document.querySelector('.DivOppArea');
+
+var txtSelfName = document.querySelector('.txtName');
+var txtSelfHand = document.querySelector('.txtHand');
+var txtSelfRank = document.querySelector('.txtRank');
+var txtSelfShield = document.querySelector('.txtShield');
+var divSelfBoard = document.querySelector('.DivFieldArea');
+var handArea = document.querySelector('.DivHandArea');
+
+var txtOppName = null;
+var txtOppHand = null;
+var txtOppRank = null;
+var txtOppShield = null;
+var divOppBoard = null;
+
+var divCurStoryArea = document.querySelector('.DivCurStoryCard');
+var divStageArea = document.querySelector('.DivQuestStages');
+var divInputArea = document.querySelector('.DivInput');
+//var txtInputArea = document.querySelector('.DivQuestStages');
+
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
@@ -21,7 +44,7 @@ function connect(event) {
 
     if(username) {
         usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
+        gamePage.classList.remove('hidden');
 
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
@@ -110,6 +133,52 @@ function onMessageReceived(payload) {
 
 function onBoardRecieved(payload){
 	var message = JSON.parse(payload.body);
+	
+	if (divOppBoard == null || divOppBoard.length != message.opponents.length){
+		if (divOppBoard != null)
+			removeAllChildren(divOppArea);
+		
+		txtOppName = [];
+		txtOppHand = [];
+		txtOppRank = [];
+		txtOppShield = [];
+		divOppBoard = [];
+		
+		for (var i = 0; i < message.opponents.length; i++){
+			var newFieldArea = divSelfFieldArea.cloneNode(true);
+			txtOppName.push(newFieldArea.querySelector('.txtName'));
+			txtOppHand.push(newFieldArea.querySelector('.txtHand'));
+			txtOppRank.push(newFieldArea.querySelector('.txtRank'));
+			txtOppShield.push(newFieldArea.querySelector('.txtShield'));
+			divOppBoard.push(newFieldArea.querySelector('.DivFieldArea'));
+			
+			removeAllChildren(divOppBoard[i])
+			divOppArea.appendChild(newFieldArea);
+		}
+	}
+	
+	removeAllChildren(handArea);
+	removeAllChildren(divSelfBoard);
+	for (var i = 0; i < divOppBoard.length; i++)
+		removeAllChildren(divOppBoard[i]);
+	
+	txtSelfName.innerHTML = "Name: " + message.name;
+	txtSelfHand.innerHTML = "Cards: " + message.hand.length;
+	txtSelfRank.innerHTML = "Rank: " + message.rank;
+	txtSelfShield.innerHTML = "Shields: " + message.sheilds;
+	for (var i = 0; i < message.hand.length; i++)
+		handArea.appendChild(createCardElement(message.hand[i]));
+	for (var i = 0; i < message.board.length; i++)
+		divSelfBoard.appendChild(createCardElement(message.board[i]));
+	
+	for (var i = 0; i < message.opponents.length; i++){
+		txtOppName[i].innerHTML = "Name: " + message.opponents[i].name;
+		txtOppHand[i].innerHTML = "Cards: " + message.opponents[i].hand;
+		txtOppRank[i].innerHTML = "Rank: " + message.opponents[i].rank;
+		txtOppShield[i].innerHTML = "Shields: " + message.opponents[i].sheilds;
+		for (var j = 0; j < message.board.length; j++)
+			divOppBoard.appendChild(createCardElement(message.opponents[i].board[j]));
+	}
 }
 
 function playCard(card){
@@ -135,6 +204,20 @@ function selectInput(option){
         };
         stompClient.send("/app/input.select", {}, JSON.stringify(InputMessage));
     }
+}
+
+function createCardElement(params){
+	var cardElement = document.createElement('img');
+	cardElement.src = params.address;
+	cardElement.alt = params.name;
+	cardElement.style = "width:50px;height:80px;"
+	return cardElement;
+}
+
+function removeAllChildren(obj){
+	while (obj.firstChild)
+		obj.removeChild(obj.firstChild);
+	return obj;
 }
 
 function getAvatarColor(messageSender) {

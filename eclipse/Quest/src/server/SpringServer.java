@@ -70,7 +70,7 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.setApplicationDestinationPrefixes("/app");
-        registry.enableSimpleBroker("/topic");
+        registry.enableSimpleBroker("/topic", "/board", "/input");
     }
     /*^^^Server Configuration methods (implemented from WebSocketMessageBrokerConfigurer)^^^*/
 	
@@ -115,10 +115,12 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
     @SendTo("/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage, 
                                SimpMessageHeaderAccessor headerAccessor) {
-    	Player p = new Player(chatMessage.getSender());
-    	WebController c = new WebController(p, mainFrame.getControllerHub(), this);
-    	mainFrame.addPlayer(p, c);
-    	controllers.put(chatMessage.getSender(), c);
+    	if (mainFrame != null) {
+	    	Player p = new Player(chatMessage.getSender());
+	    	WebController c = new WebController(p, mainFrame.getControllerHub(), this);
+	    	mainFrame.addPlayer(p, c);
+	    	controllers.put(chatMessage.getSender(), c);
+    	}
     	
         // Add username in web socket session
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
@@ -133,6 +135,7 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
     }
     
     public void sendBoard(GameView view) {
+    	System.out.println("Sending message to /board/" + view.GetPerspectiveName());
     	BoardMessage board = new BoardMessage();
     	board.createMessage(view);
     	messagingTemplate.convertAndSend("/board/" + view.GetPerspectiveName(), board);

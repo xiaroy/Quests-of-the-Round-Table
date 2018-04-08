@@ -1,298 +1,259 @@
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
 }
 
-html,body {
-    height: 100%;
-    overflow: hidden;
+.screenDiv {
+	width: 100%;
+	height: 100%;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.58;
-    color: #333;
-    background-color: #f4f4f4;
-    height: 100%;
+.DivGameArea {
+	width: 60%;
+	height: 100%;
+	float: left;
+	background-color: green;
+	position:relative;
 }
 
-body:before {
-    height: 50%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #128ff2;
-    content: "";
-    z-index: 0;
+.DivQuestInfoArea {
+	width: 20%;
+	height: 100%;
+	float: left;
+	position: relative;
 }
 
-.clearfix:after {
-    display: block;
-    content: "";
-    clear: both;
+.DivCurStoryCard {
+	width: 100%;
+	height: 35%;
+	background-color: lightblue;
+	position: relative;
+}
+
+.DivQuestStages {
+	width: 100%;
+	height: 30%;
+	background-color: gray;
+	position: relative;
+}
+
+.stageDisplay {
+	width: 100%;
+	height: 20%;
+	float: left;
+	position: relative;
+	background-color: royalblue;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.DivInput {
+	width: 100%;
+	height: 30%;
+	background-color: pink;
+	position: relative;
+}
+
+.DivChatArea {
+	width: 20%;
+	height: 100%;
+	float: left;
+	background-color: purple;
+	position: relative;
+}
+
+#messageArea{
+	width: 100%;
+	height: 65%;
+	float: left;
+	background-color: blue;
+	position: relative;
+}
+
+#messageForm{
+	width: 100%;
+	height: 30%;
+	float: left;
+	background-color: yellow;
+	position: relative;
+}
+
+.container0 {
+	width: 100%;
+	height: 5%;
+}
+
+.container1 {
+	width: 100%;
+	height: 5%;
+}
+
+.DivOppArea {
+	width: 100%;
+	height: 30%;
+	float: left;
+	position: relative;
+}
+
+.DivPlayArea {
+	width: 100%;
+	height: 30%;
+	position: relative;
+}
+
+.DivHandArea {
+	width: 100%;
+	height: 30%;
+	position: relative;
+}
+
+.txtName {
+	width: 25%;
+	height: 20%;
+	float: left;
+	background-color: gray;
+	border-collapse: collapse;
+	text-align: center;
+	position: relative;
+}
+
+.txtHand {
+	width: 25%;
+	height: 20%;
+	float: left;
+	background-color: red;
+	border-collapse: collapse;
+	text-align: center;
+	position: relative;
+}
+
+.txtRank {
+	width: 25%;
+	height: 20%;
+	float: left;
+	background-color: green;
+	border-collapse: collapse;
+	text-align: center;
+	position: relative;
+}
+
+.txtShield {
+	width: 25%;
+	height: 20%;
+	float: left;
+	background-color: yellow;
+	border-collapse: collapse;
+	text-align: center;
+	position: relative;
+}
+
+.DivFieldArea {
+	width: 100%;
+	height: 100%;
+	background-color: blue;
+	border-collapse: collapse;
+	text-align: center;
+	position: relative;
+}
+
+.DivHandArea {
+	width: 100%;
+	height: 100%;
+	background-color: green;
+	border-collapse: collapse;
+	position: relative;
+}
+
+.toppaneQuest {
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+	background-color: #4da6ff;
+	text-align: center;
+}
+
+.toppaneOther {
+	width: 100%;
+	height: 5%;
+	border-collapse: collapse;
+	background-color: gray;
+	text-align: center;
+}
+
+.chatpane {
+	width: 100%;
+	height: 25px;
+	border-collapse: collapse;
+	background-color: #4da6ff;
+}
+
+.buttonPrev {
+	background-color: white;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:8%;
+	width: 35%;
+	height: 15%;
+}
+
+.buttonNext {
+	background-color: white;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:18%;
+	width: 35%;
+	height: 15%;
+}
+
+.buttonCont {
+	background-color: white;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:80%; 
+	left:20%;
+	width: 60%;
+	height: 15%;
+}
+
+.buttonSubmit {
+	background-color: white;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:0%; 
+	left:20%;
+	width: 60%;
+	height: 15%;
+}
+
+.UserInputChat {
+	background-color: white;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:80%; 
+	left:20%;
+	width: 60%;
+	height: 15%;
+}
+
+input[type=text], select {
+	width: 100%;
+	height: 70%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
 }
 
 .hidden {
     display: none;
-}
-
-.form-control {
-    width: 100%;
-    min-height: 38px;
-    font-size: 15px;
-    border: 1px solid #c8c8c8;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-input {
-    padding-left: 10px;
-    outline: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 1.7em;
-}
-
-a {
-    color: #128ff2;
-}
-
-button {
-    box-shadow: none;
-    border: 1px solid transparent;
-    font-size: 14px;
-    outline: none;
-    line-height: 100%;
-    white-space: nowrap;
-    vertical-align: middle;
-    padding: 0.6rem 1rem;
-    border-radius: 2px;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    min-height: 38px;
-}
-
-button.default {
-    background-color: #e8e8e8;
-    color: #333;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-}
-
-button.primary {
-    background-color: #128ff2;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-    color: #fff;
-}
-
-button.accent {
-    background-color: #ff4743;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-    color: #fff;
-}
-
-#username-page {
-    text-align: center;
-}
-
-.username-page-container {
-    background: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    border-radius: 2px;
-    width: 100%;
-    max-width: 500px;
-    display: inline-block;
-    margin-top: 42px;
-    vertical-align: middle;
-    position: relative;
-    padding: 35px 55px 35px;
-    min-height: 250px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    margin-top: -160px;
-}
-
-.username-page-container .username-submit {
-    margin-top: 10px;
-}
-
-
-#chat-page {
-    position: relative;
-    height: 100%;
-}
-
-.chat-container {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    margin-top: 30px;
-    height: calc(100% - 60px);
-    max-height: 600px;
-    position: relative;
-}
-
-#chat-page ul {
-    list-style-type: none;
-    background-color: #FFF;
-    margin: 0;
-    overflow: auto;
-    overflow-y: scroll;
-    padding: 0 20px 0px 20px;
-    height: calc(100% - 150px);
-}
-
-#chat-page #messageForm {
-    padding: 20px;
-}
-
-#chat-page ul li {
-    line-height: 1.5rem;
-    padding: 10px 20px;
-    margin: 0;
-    border-bottom: 1px solid #f4f4f4;
-}
-
-#chat-page ul li p {
-    margin: 0;
-}
-
-#chat-page .event-message {
-    width: 100%;
-    text-align: center;
-    clear: both;
-}
-
-#chat-page .event-message p {
-    color: #777;
-    font-size: 14px;
-    word-wrap: break-word;
-}
-
-#chat-page .chat-message {
-    padding-left: 68px;
-    position: relative;
-}
-
-#chat-page .chat-message i {
-    position: absolute;
-    width: 42px;
-    height: 42px;
-    overflow: hidden;
-    left: 10px;
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 18px;
-    line-height: 42px;
-    color: #fff;
-    text-align: center;
-    border-radius: 50%;
-    font-style: normal;
-    text-transform: uppercase;
-}
-
-#chat-page .chat-message span {
-    color: #333;
-    font-weight: 600;
-}
-
-#chat-page .chat-message p {
-    color: #43464b;
-}
-
-#messageForm .input-group input {
-    float: left;
-    width: calc(100% - 85px);
-}
-
-#messageForm .input-group button {
-    float: left;
-    width: 80px;
-    height: 38px;
-    margin-left: 5px;
-}
-
-.chat-header {
-    text-align: center;
-    padding: 15px;
-    border-bottom: 1px solid #ececec;
-}
-
-.chat-header h2 {
-    margin: 0;
-    font-weight: 500;
-}
-
-.connecting {
-    padding-top: 5px;
-    text-align: center;
-    color: #777;
-    position: absolute;
-    top: 65px;
-    width: 100%;
-}
-
-
-@media screen and (max-width: 730px) {
-
-    .chat-container {
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-top: 10px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .chat-container {
-        height: calc(100% - 30px);
-    }
-
-    .username-page-container {
-        width: auto;
-        margin-left: 15px;
-        margin-right: 15px;
-        padding: 25px;
-    }
-
-    #chat-page ul {
-        height: calc(100% - 120px);
-    }
-
-    #messageForm .input-group button {
-        width: 65px;
-    }
-
-    #messageForm .input-group input {
-        width: calc(100% - 70px);
-    }
-
-    .chat-header {
-        padding: 10px;
-    }
-
-    .connecting {
-        top: 60px;
-    }
-
-    .chat-header h2 {
-        font-size: 1.1em;
-    }
 }
