@@ -35,6 +35,8 @@ function connect(event) {
 function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
+	stompClient.subscribe('/board/' + username, onBoardRecieved);
+	stompClient.subscribe('/input/' + username, onInputRecieved);
 
     // Tell your username to the server
     stompClient.send("/app/chat.addUser",
@@ -106,6 +108,34 @@ function onMessageReceived(payload) {
     messageArea.scrollTop = messageArea.scrollHeight;
 }
 
+function onBoardRecieved(payload){
+	var message = JSON.parse(payload.body);
+}
+
+function playCard(card){
+	if(card && stompClient) {
+        var cardMessage = {
+			user : username,
+            name: card.name,
+            address: card.src
+        };
+        stompClient.send("/app/board.playCard", {}, JSON.stringify(cardMessage));
+    }
+}
+
+function onInputRecieved(payload){
+	var message = JSON.parse(payload.body);
+}
+
+function selectInput(option){
+	if(stompClient) {
+        var InputMessage = {
+			user : username,
+            selected: option.num
+        };
+        stompClient.send("/app/input.select", {}, JSON.stringify(InputMessage));
+    }
+}
 
 function getAvatarColor(messageSender) {
     var hash = 0;

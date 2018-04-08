@@ -18,6 +18,11 @@ public class UIController extends Controller {
 		this.state = state;
 		this.gameBoard = gameBoard;
 	}
+	
+	@Override
+	public void updateDisplay() {
+		gameBoard.displayGame(hub.GetPlayerPerspective(player));
+	}
 
 	@Override
 	public ControllerResponse PromptForInput(GameState state, ControllerMessageType type) {

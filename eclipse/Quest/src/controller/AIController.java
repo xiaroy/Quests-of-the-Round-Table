@@ -25,6 +25,9 @@ public class AIController extends Controller {
         this.bid = bidStrat;
 	}
 	
+	@Override
+	public void updateDisplay() {}
+	
 	public void setSponsorStrategy(AISponsorStrategy sponsorStrat) { sponsor = sponsorStrat; }
     public void setQuestStrategy(AIQuestStrategy questStrat) { quest = questStrat; }
     public void setTournamentStrategy(AITournamentStrategy tournamentStrat) { tournament = tournamentStrat; }

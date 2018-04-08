@@ -25,6 +25,9 @@ public class TestController extends Controller {
 		return curCommand.getResponse(player, hub, state);
 	}
 	
+	@Override
+	public void updateDisplay() {}
+	
 	public void addCommand(TestCommand command) {
 		testCommands.add(command);
 	}

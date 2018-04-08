@@ -46,6 +46,15 @@ public class GameState {
     	Init();
     }
     
+    public GameState(Player[] players) {
+    	this.players = players;
+    	
+    	adventureDeck = new Deck<>();
+    	storyDeck = new Deck<>();
+    	
+    	Init();
+    }
+    
     public GameState(Player[] players, Deck<AdventureCard> adventureDeck, Deck<StoryCard> storyDeck) {
     	this.players = players;
     	this.adventureDeck = adventureDeck;

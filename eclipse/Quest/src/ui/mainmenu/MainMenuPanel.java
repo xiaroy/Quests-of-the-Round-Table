@@ -21,6 +21,8 @@ public class MainMenuPanel extends JPanel {
 	JPanel pnlMenu, pnlGame, pnlScenario;
 	JLabel lblTitle;
 	
+	private boolean webGame = false;
+	
 	public MainMenuPanel(MainFrame frame) {
 		main = frame;
 		init();
@@ -31,7 +33,7 @@ public class MainMenuPanel extends JPanel {
 		//this.setPreferredSize(new Dimension(800, 600));
 		
 		initMainMenuPnl();
-		initstartGamePnl();
+		initStartGamePnl();
 		initScenarioPnl();
 		
 		lblTitle = new JLabel("Quest for the Round Table");
@@ -46,15 +48,28 @@ public class MainMenuPanel extends JPanel {
 		int row = 0;
 		GridBagConstraints c = new GridBagConstraints();
 		
-		JButton btnGame = new JButton("Start Game");
-		btnGame.addActionListener(new ActionListener() {
+		JButton btnLGame = new JButton("Start Local Game");
+		btnLGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				webGame = false;
 				setPanel(pnlGame);
 			}
 		});
 		c.gridy = row;
-		pnlMenu.add(btnGame, c);
+		pnlMenu.add(btnLGame, c);
+		row++;
+		
+		JButton btnWGame = new JButton("Start Web Game");
+		btnWGame.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				webGame = true;
+				setPanel(pnlGame);
+			}
+		});
+		c.gridy = row;
+		pnlMenu.add(btnWGame, c);
 		row++;
 		
 		JButton btnScenario = new JButton("Test Scenarios");
@@ -80,7 +95,7 @@ public class MainMenuPanel extends JPanel {
 		row++;
 	}
 	
-	private void initstartGamePnl() {
+	private void initStartGamePnl() {
 		pnlGame = new JPanel();
 		pnlGame.setLayout(new GridBagLayout());
 		
@@ -111,7 +126,9 @@ public class MainMenuPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				int players = Integer.parseInt(txtNumOfPlayers.getText());
 				int ai = Integer.parseInt(txtNumOfAI.getText());
-				main.beginGame(players, ai);
+				if (webGame)
+					main.beginWebGame(players, ai);
+				else main.beginGame(players, ai);
 			}
 		});
 		c.gridx = 0;

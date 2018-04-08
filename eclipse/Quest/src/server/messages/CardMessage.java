@@ -4,8 +4,12 @@ import model.cards.Card;
 
 public class CardMessage {
 
+	private String user;
 	private String name;
 	private String address;
+	
+	public void setUser(String user) { this.user = user; }
+	public String getUser() { return user; }
 	
 	public void setName(String name) { this.name = name; }
 	public String getName() { return name; }

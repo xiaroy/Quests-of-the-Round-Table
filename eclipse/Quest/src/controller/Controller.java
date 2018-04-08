@@ -19,4 +19,8 @@ public abstract class Controller {
     public abstract ControllerResponse PromptForInput(GameState state, ControllerMessageType type);
     
     public GameView getPlayerView() { return hub.GetPlayerPerspective(player); }
+    
+    public Player getPlayer() { return player; }
+    
+    public abstract void updateDisplay();
 }
