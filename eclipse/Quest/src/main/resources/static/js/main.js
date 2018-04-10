@@ -223,7 +223,7 @@ function createCardElement(params){
 	cardElement.src = params.address;
 	cardElement.alt = params.name;
 	cardElement.index = params.index;
-	cardElement.style = "width:50px;height:80px;"
+	cardElement.style = "width:100px;height:160px;"
 	cardElement.onclick = function(){ playCard(cardElement); };
 	return cardElement;
 }

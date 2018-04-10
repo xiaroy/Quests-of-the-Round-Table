@@ -22,52 +22,104 @@ body, html {
 	float: left;
 }
 
+
+
 .DivCurStoryCard {
 	width: 100%;
 	height: 35%;
-	background-color: lightblue;
+	background-color: #FF4500;
 }
 
 .DivQuestStages {
 	width: 100%;
 	height: 30%;
 	background-color: gray;
+	
+	
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black; 
+}
+
+.DivStage {
+	width: 100%;
+	height: 30%;
+	background-color: gray;
+	
+	/*
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black; */
 }
 
 .stageDisplay {
 	width: 100%;
 	height: 20%;
 	float: left;
-	background-color: royalblue;
+	background-color: #FF4500;
 	border-collapse: collapse;
 	text-align: center;
+
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black; 
+	
 }
 
 .DivInput {
 	width: 100%;
 	height: 30%;
-	background-color: pink;
+	background-color: #FF4500;
+	
+	
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black; 
+}
+
+.DivInputButtons {
+	width: 100%;
+	height: 30%;
+	background-color: #FF4500;
+	
+	/*
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black; */
 }
 
 .DivChatArea {
 	width: 20%;
 	height: 100%;
 	float: left;
-	background-color: purple;
+	background-color: black;
 }
 
 #messageArea{
 	width: 100%;
 	height: 65%;
 	float: left;
-	background-color: blue;
+	background-color: white;
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black; 
 }
 
 #messageForm{
 	width: 100%;
 	height: 30%;
 	float: left;
-	background-color: yellow;
+	background-color: gray;
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black; 
 }
 
 .container0 {
@@ -96,40 +148,66 @@ body, html {
 	height: 30%;
 }
 
+.txtInputMsg {
+	/*
+	box-sizing: border-box;
+	border-top: 2px solid  black;
+	border-bottom: 2px solid  black;
+	border-left: 2px solid  black; */
+}
+
 .txtName {
 	width: 25%;
 	height: 20%;
 	float: left;
-	background-color: gray;
+	background-color: #C0C0C0;
 	border-collapse: collapse;
 	text-align: center;
+	
+	box-sizing: border-box;
+	border-top: 2px solid  black;
+	border-bottom: 2px solid  black;
+	border-left: 2px solid  black;
 }
 
 .txtHand {
 	width: 25%;
 	height: 20%;
 	float: left;
-	background-color: red;
-	border-collapse: collapse;
+	background-color: #C0C0C0;
 	text-align: center;
+	
+	border-collapse: collapse;
+	box-sizing: border-box;
+	border-top: 2px solid  black;
+	border-bottom: 2px solid  black;
 }
 
 .txtRank {
 	width: 25%;
 	height: 20%;
 	float: left;
-	background-color: green;
+	background-color: #C0C0C0;
 	border-collapse: collapse;
+	
 	text-align: center;
+	box-sizing: border-box;
+	border-top: 2px solid  black;
+	border-bottom: 2px solid  black;
 }
 
 .txtShield {
 	width: 25%;
 	height: 20%;
 	float: left;
-	background-color: yellow;
+	background-color: #C0C0C0;
 	border-collapse: collapse;
 	text-align: center;
+	
+	box-sizing: border-box;
+	border-top: 2px solid  black;
+	border-bottom: 2px solid  black;
+	border-right: 2px solid  black;
 }
 
 .DivFieldArea {
@@ -143,8 +221,15 @@ body, html {
 .DivHandArea {
 	width: 100%;
 	height: 100%;
-	background-color: green;
+	background-color: white;
+	
+	/*
+	box-sizing: border-box;
 	border-collapse: collapse;
+	border-style: solid;
+    border-color: black;
+	border-width: 2px;
+	*/
 }
 
 .selfCardPane {
@@ -152,9 +237,16 @@ body, html {
 	height: 25%;
 	position: relative;
 	float: left;
-	background-color: yellow;
+	background-color: black;
 	border-collapse: collapse;
 	text-align: center;
+	/*
+	box-sizing: border-box;
+	border-collapse: collapse;
+	border-style: solid;
+    border-color: black;
+	border-width: 2px;
+	*/
 }
 
 .toppaneQuest {
@@ -163,14 +255,26 @@ body, html {
 	border-collapse: collapse;
 	background-color: #4da6ff;
 	text-align: center;
+	
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black;
+	font-weight: bold;
 }
 
 .toppaneOther {
 	width: 100%;
 	height: 5%;
 	border-collapse: collapse;
-	background-color: gray;
+	background-color: #4da6ff;
 	text-align: center;
+	
+	box-sizing: border-box;
+	border-style: solid;
+    border-width: 2px;
+	border-color: black;
+	font-weight: bold;
 }
 
 .chatpane {
@@ -191,6 +295,29 @@ body, html {
 	height: 15%;
 }
 
+.buttonPrev:hover {
+	background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:8%;
+	width: 35%;
+	height: 15%;
+}
+
+.buttonPrev:active {
+	background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:8%;
+	width: 35%;
+	height: 15%;
+  transform: translateY(4px);
+}
+
 .buttonNext {
 	background-color: white;
 	color: black;
@@ -200,6 +327,29 @@ body, html {
 	left:18%;
 	width: 35%;
 	height: 15%;
+}
+
+.buttonNext:hover {
+    background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:18%;
+	width: 35%;
+	height: 15%;
+}
+
+.buttonNext:active {
+	background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:18%;
+	width: 35%;
+	height: 15%;
+  transform: translateY(4px);
 }
 
 .buttonCont {
@@ -213,6 +363,29 @@ body, html {
 	height: 15%;
 }
 
+.buttonCont:hover {
+   	background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:80%; 
+	left:20%;
+	width: 60%;
+	height: 15%;
+}
+
+.buttonCont:active {
+	background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:80%; 
+	left:20%;
+	width: 60%;
+	height: 15%;
+  transform: translateY(4px);
+}
+
 .buttonSubmit {
 	background-color: white;
 	color: black;
@@ -222,6 +395,29 @@ body, html {
 	left:20%;
 	width: 60%;
 	height: 15%;
+}
+
+.buttonSubmit:hover {
+   	background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:8%;
+	width: 35%;
+	height: 15%;
+}
+
+.buttonSubmit:active {
+	background-color: red;
+	color: black;
+	border: 2px solid black; 
+	position:relative;
+	top:60%; 
+	left:8%;
+	width: 35%;
+	height: 15%;
+  transform: translateY(4px);
 }
 
 .UserInputChat {
