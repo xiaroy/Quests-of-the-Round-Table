@@ -37,10 +37,12 @@
             
             <!-- self text area -->
             <div class="DivPlayArea">
-                <textbox class="txtName"> Name </textbox>
-                <textbox class="txtHand"> Card </textbox>
-                <textbox class="txtRank"> Rank </textbox>
-                <textbox class="txtShield"> Shield </textbox>
+				<div class="DivPlayerInfo">
+					<textbox class="txtName"> Name </textbox>
+					<textbox class="txtHand"> Card </textbox>
+					<textbox class="txtRank"> Rank </textbox>
+					<textbox class="txtShield"> Shield </textbox>
+				</div>
                 <div class="DivFieldArea"><!--Self Card Play Zone--></div>
             </div>
 
@@ -61,13 +63,17 @@
             <!-- ?blank space in middle -->
             <div class="DivQuestStages">
                 <textbox class="stageDisplay"> stage 1</textbox>
+				<div class="DivStage"></div>
                 <button class="buttonPrev">Prev</button>
                 <button class="buttonNext">Next</button>
             </div>
             
             <!-- control section -->
             <div class="DivInput">
-                <button class="buttonCont">Control</button>
+				<textbox class="txtInputMsg"> Name </textbox>
+				<div class="DivInputButtons">
+					<button class="buttonCont">Control</button>
+				</div>
             </div>
         </div>
 

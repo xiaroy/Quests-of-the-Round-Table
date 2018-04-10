@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import controller.AIController;
 import controller.Controller;
 import controller.ControllerHub;
+import controller.ControllerHub.ControllerMessageType;
+import controller.ControllerHub.ControllerResponse;
 import controller.UIController;
 import controller.AI.*;
 import model.game.GameState;
@@ -80,6 +82,8 @@ public class MainFrame extends JFrame {
 						System.out.println(p.GetName());
 					}
 					
+					ControllerResponse rep = controllers.get(0).PromptForInput(game, ControllerMessageType.WillSponsor);
+					System.out.println("Responce : " + rep);
 					//game.startGame();
 				}
 			}).start();

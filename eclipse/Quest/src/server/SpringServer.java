@@ -130,8 +130,8 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
     @MessageMapping("/board.playCard")
     public void playCard(@Payload CardMessage card) {
     	WebController c = controllers.get(card.getUser());
-    	//if (c != null)
-    		//c.
+    	if (c != null)
+    		c.playCard(card.getName(), card.getIndex());
     }
     
     public void sendBoard(GameView view) {

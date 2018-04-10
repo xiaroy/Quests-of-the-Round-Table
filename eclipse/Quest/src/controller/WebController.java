@@ -70,10 +70,12 @@ public class WebController extends Controller {
 	}
 	
 	public void selectedInput(int selected) {
+		System.out.println(player.GetName() + " : " + selected);
 		inputSelected = selected;
 	}
 	
-	public void playCard(String name) {
+	public void playCard(String name, int index) {
+		System.out.println(player.GetName() + " : " + name + " : " + index);
 		for (AdventureCard card : player.getPlayersCards()) {
 			
 		}

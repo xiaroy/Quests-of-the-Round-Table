@@ -43,11 +43,13 @@ public class BoardMessage {
 		for (int i = 0; i < hand.length; i++) {
 			hand[i] = new CardMessage();
 			hand[i].setCard(view.GetPerspectiveHand()[i]);
+			hand[i].setIndex(i);
 		}
 		board = new CardMessage[view.GetPerspectiveBoard().length];
 		for (int i = 0; i < board.length; i++) {
 			board[i] = new CardMessage();
 			board[i].setCard(view.GetPerspectiveBoard()[i]);
+			board[i].setIndex(i);
 		}
 		
 		opponents = new OpponentMessage[view.NumberOfOtherPlayers()];
@@ -62,6 +64,7 @@ public class BoardMessage {
 			for (int j = 0; j < oppBoard.length; j++) {
 				oppBoard[j] = new CardMessage();
 				oppBoard[j].setCard(view.GetOtherPlayerBoard(i)[j]);
+				oppBoard[j].setIndex(j);
 			}
 			opponents[i].setBoard(oppBoard);
 		}

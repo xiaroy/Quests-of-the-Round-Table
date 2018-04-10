@@ -22,9 +22,9 @@ var txtOppShield = null;
 var divOppBoard = null;
 
 var divCurStoryArea = document.querySelector('.DivCurStoryCard');
-var divStageArea = document.querySelector('.DivQuestStages');
-var divInputArea = document.querySelector('.DivInput');
-//var txtInputArea = document.querySelector('.DivQuestStages');
+var divStageArea = document.querySelector('.DivStage');
+var txtInputArea = document.querySelector('.txtInputMsg');
+var divInputBtns = document.querySelector('.DivInputButtons');
 
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
@@ -185,8 +185,9 @@ function playCard(card){
 	if(card && stompClient) {
         var cardMessage = {
 			user : username,
-            name: card.name,
-            address: card.src
+            name: card.alt,
+            address: card.src,
+			index: card.index
         };
         stompClient.send("/app/board.playCard", {}, JSON.stringify(cardMessage));
     }
@@ -194,6 +195,17 @@ function playCard(card){
 
 function onInputRecieved(payload){
 	var message = JSON.parse(payload.body);
+	
+	txtInputArea.innerHTML = message.message;
+	removeAllChildren(divInputBtns);
+	for (var i = 0; i < message.options.length; i++){
+		var btnElement = document.createElement('button');
+		btnElement.innerHTML = message.options[i];
+		btnElement.num = i;
+		btnElement.classList.add('buttonCont');
+		btnElement.onclick = function(){ selectInput(btnElement); };
+		divInputBtns.appendChild(btnElement);
+	}
 }
 
 function selectInput(option){
@@ -210,7 +222,9 @@ function createCardElement(params){
 	var cardElement = document.createElement('img');
 	cardElement.src = params.address;
 	cardElement.alt = params.name;
+	cardElement.index = params.index;
 	cardElement.style = "width:50px;height:80px;"
+	cardElement.onclick = function(){ playCard(cardElement); };
 	return cardElement;
 }
 

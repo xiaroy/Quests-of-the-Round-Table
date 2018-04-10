@@ -14,35 +14,30 @@ body, html {
 	height: 100%;
 	float: left;
 	background-color: green;
-	position:relative;
 }
 
 .DivQuestInfoArea {
 	width: 20%;
 	height: 100%;
 	float: left;
-	position: relative;
 }
 
 .DivCurStoryCard {
 	width: 100%;
 	height: 35%;
 	background-color: lightblue;
-	position: relative;
 }
 
 .DivQuestStages {
 	width: 100%;
 	height: 30%;
 	background-color: gray;
-	position: relative;
 }
 
 .stageDisplay {
 	width: 100%;
 	height: 20%;
 	float: left;
-	position: relative;
 	background-color: royalblue;
 	border-collapse: collapse;
 	text-align: center;
@@ -52,7 +47,6 @@ body, html {
 	width: 100%;
 	height: 30%;
 	background-color: pink;
-	position: relative;
 }
 
 .DivChatArea {
@@ -60,7 +54,6 @@ body, html {
 	height: 100%;
 	float: left;
 	background-color: purple;
-	position: relative;
 }
 
 #messageArea{
@@ -68,7 +61,6 @@ body, html {
 	height: 65%;
 	float: left;
 	background-color: blue;
-	position: relative;
 }
 
 #messageForm{
@@ -76,7 +68,6 @@ body, html {
 	height: 30%;
 	float: left;
 	background-color: yellow;
-	position: relative;
 }
 
 .container0 {
@@ -93,19 +84,16 @@ body, html {
 	width: 100%;
 	height: 30%;
 	float: left;
-	position: relative;
 }
 
 .DivPlayArea {
 	width: 100%;
 	height: 30%;
-	position: relative;
 }
 
 .DivHandArea {
 	width: 100%;
 	height: 30%;
-	position: relative;
 }
 
 .txtName {
@@ -115,7 +103,6 @@ body, html {
 	background-color: gray;
 	border-collapse: collapse;
 	text-align: center;
-	position: relative;
 }
 
 .txtHand {
@@ -125,7 +112,6 @@ body, html {
 	background-color: red;
 	border-collapse: collapse;
 	text-align: center;
-	position: relative;
 }
 
 .txtRank {
@@ -135,7 +121,6 @@ body, html {
 	background-color: green;
 	border-collapse: collapse;
 	text-align: center;
-	position: relative;
 }
 
 .txtShield {
@@ -145,7 +130,6 @@ body, html {
 	background-color: yellow;
 	border-collapse: collapse;
 	text-align: center;
-	position: relative;
 }
 
 .DivFieldArea {
@@ -154,7 +138,6 @@ body, html {
 	background-color: blue;
 	border-collapse: collapse;
 	text-align: center;
-	position: relative;
 }
 
 .DivHandArea {
@@ -162,7 +145,16 @@ body, html {
 	height: 100%;
 	background-color: green;
 	border-collapse: collapse;
+}
+
+.selfCardPane {
+	width: 33.3%;
+	height: 25%;
 	position: relative;
+	float: left;
+	background-color: yellow;
+	border-collapse: collapse;
+	text-align: center;
 }
 
 .toppaneQuest {

@@ -7,6 +7,7 @@ public class CardMessage {
 	private String user;
 	private String name;
 	private String address;
+	private int index = -1;
 	
 	public void setUser(String user) { this.user = user; }
 	public String getUser() { return user; }
@@ -16,6 +17,9 @@ public class CardMessage {
 	
 	public void setAddress(String address) { this.address = address; }
 	public String getAddress() { return address; }
+	
+	public void setIndex(int index) { this.index = index; }
+	public int getIndex() { return index; }
 	
 	public void setCard(Card card) {
 		this.setName(card.getName());
