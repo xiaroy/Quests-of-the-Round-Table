@@ -3,7 +3,7 @@
   <head>
       <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
       <title>Spring Boot WebSocket Chat Application</title>
-      <link rel="stylesheet" href="/css/main.css" />
+      <link rel="stylesheet" href="/css/main.css" /> 
   </head>
   <body>
     <noscript>
@@ -26,24 +26,27 @@
 	
 	<!-- screen div -->
     <div id="game-page" class="hidden">
+	
         <!-- 66% first vertical div (Game) -->
         <div class="DivGameArea">
-            <div class="container0">
+		
+            <div class="container0"> <!-- 5 -->
                 <div class="toppaneQuest">Quests of the Round Table Web Game</div>
             </div>
 
-            <!-- textboxes for opponent info -->
-            <div class="DivOppArea"></div>
+            <!-- textboxes for opponent info --> <!-- 33 -->
+            <div class="DivOppArea">
+			</div>  <!-- this is where first 33% is-->
             
             <!-- self text area -->
-            <div class="DivPlayArea">
+            <div class="DivPlayArea"><!-- 33 -->
 				<div class="DivPlayerInfo">
-					<textbox class="txtName"> Name </textbox>
+					<textbox class="txtName"> Name self </textbox>
 					<textbox class="txtHand"> Card </textbox>
 					<textbox class="txtRank"> Rank </textbox>
 					<textbox class="txtShield"> Shield </textbox>
 				</div>
-                <div class="DivFieldArea"><!--Self Card Play Zone--></div>
+                <div class="DivFieldArea"> where is this<!--Self Card Play Zone--></div>
             </div>
 
             <!-- self display area -->
@@ -55,7 +58,7 @@
 
 
         <!-- 33% second div (quest info) -->
-        <div class="DivQuestInfoArea">
+        <div class="DivQuestInfoArea"> <!-- 100% -->
             <div class="toppaneOther">Quest Information</div>
             <!-- display current quest area -->
             <div class="DivCurStoryCard"></div>
@@ -63,7 +66,7 @@
             <!-- ?blank space in middle -->
             <div class="DivQuestStages">
                 <textbox class="stageDisplay"> Stage </textbox>
-				<div class="DivStage"></div>
+				<div class="DivStage"></div> <!-- stage placement (Cards) -->
                 <button class="buttonPrev">Prev</button>
                 <button class="buttonNext">Next</button>
             </div>
