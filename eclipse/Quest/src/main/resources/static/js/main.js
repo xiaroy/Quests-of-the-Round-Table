@@ -186,8 +186,8 @@ function onBoardRecieved(payload){
 		txtOppHand[i].innerHTML = "Cards: " + message.opponents[i].hand;
 		txtOppRank[i].innerHTML = "Rank: " + message.opponents[i].rank;
 		txtOppShield[i].innerHTML = "Shields: " + message.opponents[i].sheilds;
-		for (var j = 0; j < message.board.length; j++)
-			divOppBoard.appendChild(createCardElement(message.opponents[i].board[j]));
+		for (var j = 0; j < message.opponents[i].board.length; j++)
+			divOppBoard[i].appendChild(createCardElement(message.opponents[i].board[j]));
 	}
 	
 	removeAllChildren(divCurStoryArea);

@@ -59,6 +59,7 @@ public abstract class ControllerHub {
         BidForTest,
         ParticipateInTournament,
         PlayForTournament,
+        Continue,
     }
     
     public enum ControllerResponse{

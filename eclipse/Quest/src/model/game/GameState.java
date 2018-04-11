@@ -160,7 +160,9 @@ public class GameState {
             if (currentCard == null)
             	break;
             System.out.println("Story Card " + currentCard.getName() + " was drawn");
-            controller.sendUIMessage(getCurrentTurnPlayer(), currentCard.getName() + " was drawn for the turn");
+            controller.sendUIMessage(currentCard.getName() + " was drawn for the turn");
+            controller.updateView();
+            controller.PromptUserInput(players, ControllerMessageType.Continue);
             currentTime = GameTime.InEvent;
             currentCard.doEffect(this);
             currentTime = GameTime.BetweenStories;
@@ -206,10 +208,10 @@ public class GameState {
             if (response[0] == ControllerResponse.Yes)
             {
                 sponsor = players[askPlayer];
-                System.out.println(sponsor.GetName() + " choose to sponsor");
+                controller.sendUIMessage(sponsor.GetName() + " choose to sponsor");
                 break;
             }
-            System.out.println(players[askPlayer].GetName() + " declined to sponsor");
+            controller.sendUIMessage(players[askPlayer].GetName() + " declined to sponsor");
         }
 
         //Check if anyone sponsored the quest
@@ -253,10 +255,10 @@ public class GameState {
         {
             if (response[i] == ControllerResponse.Yes)
             {
-            	System.out.println(nonSponsors[i].GetName() + " has joined the quest");
+            	controller.sendUIMessage(nonSponsors[i].GetName() + " has joined the quest");
                 pariticipants.add(nonSponsors[i]);
             }
-            else System.out.println(nonSponsors[i].GetName() + " declined the quest");
+            else controller.sendUIMessage(nonSponsors[i].GetName() + " declined the quest");
         }
         
         //Quest loop to loop for each stage in the quest
@@ -282,12 +284,12 @@ public class GameState {
                 if (pariticipants.get(i).GetBattlePoints(this) < currentQuest.GetBattlePointsForStage(q, this))
                 {
                 	stageResults += pariticipants.get(i).GetName() + " failed the quest\n";
-                	System.out.println(pariticipants.get(i).GetName() + " failed the quest");
+                	controller.sendUIMessage(pariticipants.get(i).GetName() + " failed the quest");
                     pariticipants.remove(i);
                 }
                 else {
                 	stageResults += pariticipants.get(i).GetName() + " continues the quest\n";
-                	System.out.println(pariticipants.get(i).GetName() + " continues the quest");
+                	controller.sendUIMessage(pariticipants.get(i).GetName() + " continues the quest");
                 }
             }
 

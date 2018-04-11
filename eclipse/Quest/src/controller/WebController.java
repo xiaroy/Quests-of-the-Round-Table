@@ -62,6 +62,10 @@ public class WebController extends Controller {
 			curInputMsg.setMessage("Select the Cards to use in the Tournament");
 			curInputMsg.setOptions(getControlOptions(ControlPanel.ControlTypes.Continue));
 			break;
+		case Continue:
+			curInputMsg.setMessage("Continue");
+			curInputMsg.setOptions(getControlOptions(ControlPanel.ControlTypes.Continue));
+			break;
 		}
 		
 		server.sendInput(curInputMsg);
