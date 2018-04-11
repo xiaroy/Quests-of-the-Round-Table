@@ -28,6 +28,9 @@ public class AIController extends Controller {
 	@Override
 	public void updateDisplay() {}
 	
+	@Override
+	public void sendSystemMessage(String msg) {}
+	
 	public void setSponsorStrategy(AISponsorStrategy sponsorStrat) { sponsor = sponsorStrat; }
     public void setQuestStrategy(AIQuestStrategy questStrat) { quest = questStrat; }
     public void setTournamentStrategy(AITournamentStrategy tournamentStrat) { tournament = tournamentStrat; }

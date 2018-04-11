@@ -19,12 +19,14 @@ public class GameView {
         this.perspective = perspective;
         this.currentStory = state.getCurrentStoryCard();
         this.currentQuest = state.getCurrentQuest();
-        int i = 0;
+        int i = 0, perPlayerIndex = 0;
         others = new OtherPlayer[state.getPlayers().length];
         for (Player player : state.getPlayers())
         {
-            if (player == perspective)
+            if (player == perspective) {
+            	perPlayerIndex = i;
                 continue;
+            }
             others[i] = new OtherPlayer();
         	others[i].name = player.GetName();
 			others[i].board = player.getPlayersBoard();
@@ -36,7 +38,7 @@ public class GameView {
         {
             OtherPlayer[] newOthers = new OtherPlayer[i];
             for (int i2 = 0; i2 < i; i2++)
-                newOthers[i2] = others[i2];
+                newOthers[i2] = others[(i2 + perPlayerIndex) % i];
             others = newOthers;
         }
     }

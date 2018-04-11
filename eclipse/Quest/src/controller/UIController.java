@@ -53,4 +53,7 @@ public class UIController extends Controller {
 		return hub.GetPlayerPerspective(player);
 	}
 	
+	@Override
+	public void sendSystemMessage(String msg) {}
+	
 }

@@ -198,6 +198,7 @@ public class GameState {
         currentTime = GameTime.SelectSponor;
         Player sponsor = null;
         ControllerResponse[] response = null;
+        controller.updateView();
         for (int i = currentTurnPlayer; i < currentTurnPlayer + players.length; i++)
         {
             int askPlayer = i % players.length;
@@ -232,7 +233,8 @@ public class GameState {
                 str += card.getName() + ", ";
             System.out.println(str);
         }
-
+        
+        controller.updateView();
         //Getting all other not Sponsor player to ask to be in the quest
         currentTime = GameTime.InQuest;
         Player[] nonSponsors = new Player[players.length - 1];
@@ -260,12 +262,14 @@ public class GameState {
         //Quest loop to loop for each stage in the quest
         for (int q = 0; q < currentQuest.GetNumberOfStages() && pariticipants.size() > 0; q++)
         {
+        	controller.updateView();
             currentQuest.setCurStage(q);
             //Asking the quest participants if they want to play anything for this stage
             currentTime = GameTime.SelectCardsForQuest;
             controller.PromptUserInput(pariticipants.toArray(new Player[pariticipants.size()]), ControllerMessageType.PlayForQuest);
             currentTime = GameTime.InQuest;
             String stageResults = "";
+            controller.updateView();
 
             //Checking which participants failed the quest
             for (int i = pariticipants.size() - 1; i >= 0; i--)
@@ -313,6 +317,7 @@ public class GameState {
         for (Player p : players)
             p.RemoveCardsFromBoardWithCriteria(new EndQuestCardCriteria());
 
+        controller.updateView();
         currentQuest = null;
     }
 

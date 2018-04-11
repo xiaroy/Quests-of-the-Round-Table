@@ -23,6 +23,12 @@ var divOppBoard = null;
 
 var divCurStoryArea = document.querySelector('.DivCurStoryCard');
 var divStageArea = document.querySelector('.DivStage');
+var btnNextStage = document.querySelector('.buttonNext');
+var btnPrevStage = document.querySelector('.buttonPrev');
+var txtCurStage = document.querySelector('.stageDisplay');
+var curQuestStageCards = null;
+var curDisplayStage = 0;
+
 var txtInputArea = document.querySelector('.txtInputMsg');
 var divInputBtns = document.querySelector('.DivInputButtons');
 
@@ -58,6 +64,7 @@ function connect(event) {
 function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
+	stompClient.subscribe('/topic/' + username, onMessageReceived);
 	stompClient.subscribe('/board/' + username, onBoardRecieved);
 	stompClient.subscribe('/input/' + username, onInputRecieved);
 
@@ -103,6 +110,9 @@ function onMessageReceived(payload) {
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' left!';
+	} else if (message.type == 'GAME'){
+		messageElement.classList.add('event-message');
+        //message.content = message.content;
     } else {
         messageElement.classList.add('chat-message');
 
@@ -179,6 +189,18 @@ function onBoardRecieved(payload){
 		for (var j = 0; j < message.board.length; j++)
 			divOppBoard.appendChild(createCardElement(message.opponents[i].board[j]));
 	}
+	
+	removeAllChildren(divCurStoryArea);
+	removeAllChildren(divStageArea);
+	if (message.storyCard != null){
+		divCurStoryArea.appendChild(createCardElement(message.storyCard));
+	}
+	if (message.questCards != null && message.questCards.length > 0){
+		curQuestStageCards = message.questCards;
+	} else {
+		curQuestStageCards = null;
+	}
+	displayStage(curDisplayStage);
 }
 
 function playCard(card){
@@ -199,12 +221,7 @@ function onInputRecieved(payload){
 	txtInputArea.innerHTML = message.message;
 	removeAllChildren(divInputBtns);
 	for (var i = 0; i < message.options.length; i++){
-		var btnElement = document.createElement('button');
-		btnElement.innerHTML = message.options[i];
-		btnElement.num = i;
-		btnElement.classList.add('buttonCont');
-		btnElement.onclick = function(){ selectInput(btnElement); };
-		divInputBtns.appendChild(btnElement);
+		divInputBtns.appendChild(createButtonElement(message.options[i], i));
 	}
 }
 
@@ -212,10 +229,50 @@ function selectInput(option){
 	if(stompClient) {
         var InputMessage = {
 			user : username,
+			message: option.innerHTML,
             selected: option.num
         };
         stompClient.send("/app/input.select", {}, JSON.stringify(InputMessage));
     }
+}
+
+function selectStage(){
+	if(stompClient) {
+        var InputMessage = {
+			user : username,
+			message: "QuestStage",
+            selected: curDisplayStage
+        };
+        stompClient.send("/app/input.select", {}, JSON.stringify(InputMessage));
+    }
+}
+
+function displayStage(index){
+	curDisplayStage = index;
+	removeAllChildren(divStageArea);
+	if (curQuestStageCards == null){
+		curDisplayStage = 0;
+		txtCurStage.innerHTML = "Stage 1";
+	} else {
+		if (curDisplayStage >= curQuestStageCards.length)
+			curDisplayStage = curQuestStageCards.length - 1;
+		else if (curDisplayStage < 0)
+			curDisplayStage = 0;
+		
+		for (var i = 0; i < curQuestStageCards[curDisplayStage].length; i++){
+			ivOppBoard.appendChild(createCardElement(curQuestStageCards[curDisplayStage][i]));
+		}
+		txtCurStage.innerHTML = "Stage " + (curDisplayStage + 1);
+	}
+}
+
+function createButtonElement(name, index){
+	var btnElement = document.createElement('button');
+	btnElement.innerHTML = name;
+	btnElement.num = index;
+	btnElement.classList.add('buttonCont');
+	btnElement.onclick = function(){ selectInput(btnElement); };
+	return btnElement;
 }
 
 function createCardElement(params){
@@ -242,6 +299,10 @@ function getAvatarColor(messageSender) {
     var index = Math.abs(hash % colors.length);
     return colors[index];
 }
+
+btnNextStage.onclick = function(){ displayStage(curDisplayStage + 1); };
+btnPrevStage.onclick = function(){ displayStage(curDisplayStage - 1); };
+divStageArea.onclick = selectStage;
 
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)

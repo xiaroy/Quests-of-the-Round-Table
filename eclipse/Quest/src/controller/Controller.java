@@ -23,4 +23,6 @@ public abstract class Controller {
     public Player getPlayer() { return player; }
     
     public abstract void updateDisplay();
+    
+    public abstract void sendSystemMessage(String msg);
 }

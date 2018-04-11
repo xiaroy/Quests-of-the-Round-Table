@@ -110,6 +110,10 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
         return chatMessage;
     }
+	
+	public void sendMessage(String user, ChatMessage chatMessage) {
+		messagingTemplate.convertAndSend("/topic/" + user, chatMessage);
+    }
 
     @MessageMapping("/chat.addUser")
     @SendTo("/topic/public")
@@ -135,7 +139,7 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
     }
     
     public void sendBoard(GameView view) {
-    	System.out.println("Sending message to /board/" + view.GetPerspectiveName());
+    	//System.out.println("Sending message to /board/" + view.GetPerspectiveName());
     	BoardMessage board = new BoardMessage();
     	board.createMessage(view);
     	messagingTemplate.convertAndSend("/board/" + view.GetPerspectiveName(), board);
@@ -145,7 +149,7 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
     public void getInput(@Payload InputMessage message) {
     	WebController c = controllers.get(message.getUser());
     	if (c != null)
-    		c.selectedInput(message.getSelected());
+    		c.selectedInput(message);
     }
     
     public void sendInput(InputMessage message) {

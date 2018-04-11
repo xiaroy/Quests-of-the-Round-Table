@@ -3,6 +3,7 @@ package ui.mainmenu;
 import controller.ControllerHub;
 import controller.TestController;
 import controller.ControllerHub.ControllerResponse;
+import controller.HotSeatHub;
 import controller.TestController.TestCommand;
 import model.cards.AdventureCard;
 import model.cards.FoeCard;
@@ -21,7 +22,7 @@ import model.player.Player;
 public class Scenario {
 
 	private GameState state;
-	private ControllerHub hub;
+	private HotSeatHub hub;
 	
 	public Scenario() {
 		init();
@@ -30,7 +31,7 @@ public class Scenario {
 	private void init() {
 		Deck<StoryCard> storyDeck = new Deck<>();
 		Deck<AdventureCard> adventureDeck = new Deck<>();
-		hub = new ControllerHub();
+		hub = new HotSeatHub();
 		Player[] players = new Player[4];
 		TestController[] con = new TestController[players.length];
 		for(int i = 0; i < players.length; i++) {
@@ -150,5 +151,5 @@ public class Scenario {
 	}
 	
 	public GameState getGameState() { return state; }
-	public ControllerHub getControllerHub() { return hub; }
+	public HotSeatHub getControllerHub() { return hub; }
 }

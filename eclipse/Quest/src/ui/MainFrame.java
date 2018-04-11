@@ -10,7 +10,9 @@ import controller.Controller;
 import controller.ControllerHub;
 import controller.ControllerHub.ControllerMessageType;
 import controller.ControllerHub.ControllerResponse;
+import controller.HotSeatHub;
 import controller.UIController;
+import controller.WebHub;
 import controller.AI.*;
 import model.game.GameState;
 import model.player.Player;
@@ -48,7 +50,7 @@ public class MainFrame extends JFrame {
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
-					cHub = new ControllerHub();
+					cHub = new WebHub();
 					
 					SpringServer.setMainFrame(MainFrame.this);
 					SpringServer.startServer();
@@ -78,13 +80,13 @@ public class MainFrame extends JFrame {
 						c.updateDisplay();
 					}
 					
-					for (Player p : players) {
-						System.out.println(p.GetName());
-					}
+					//for (Player p : players) {
+					//	System.out.println(p.GetName());
+					//}
 					
-					ControllerResponse rep = controllers.get(0).PromptForInput(game, ControllerMessageType.WillSponsor);
-					System.out.println("Responce : " + rep);
-					//game.startGame();
+					//ControllerResponse rep = controllers.get(0).PromptForInput(game, ControllerMessageType.WillSponsor);
+					//System.out.println("Responce : " + rep);
+					game.startGame();
 				}
 			}).start();
 		}
@@ -107,10 +109,10 @@ public class MainFrame extends JFrame {
 				public void run() {
 					GameBoardPanel view = new GameBoardPanel(players - 1);
 					game = new GameState(players);
-					cHub = new ControllerHub();
+					cHub = new HotSeatHub();
 					
 					cHub.SetGameState(game);
-					cHub.setBoardPanel(view);
+					((HotSeatHub)cHub).setBoardPanel(view);
 					game.setController(cHub);
 					view.setControllerHub(cHub);
 					int i = 0;

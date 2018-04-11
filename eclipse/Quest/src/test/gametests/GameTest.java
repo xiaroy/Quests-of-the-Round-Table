@@ -3,6 +3,7 @@ package test.gametests;
 import controller.ControllerHub;
 import controller.TestController;
 import controller.ControllerHub.ControllerResponse;
+import controller.HotSeatHub;
 import controller.TestController.TestCommand;
 import junit.framework.TestCase;
 import model.cards.AdventureCard;
@@ -25,7 +26,7 @@ public class GameTest extends TestCase {
 	public void testCoupleTurns() {
 		Deck<StoryCard> storyDeck = new Deck<>();
 		Deck<AdventureCard> adventureDeck = new Deck<>();
-		ControllerHub hub = new ControllerHub();
+		ControllerHub hub = new HotSeatHub();
 		Player[] players = new Player[4];
 		TestController[] con = new TestController[players.length];
 		for(int i = 0; i < players.length; i++) {
@@ -169,7 +170,7 @@ public class GameTest extends TestCase {
 	public void testStartQuest() {
 		Deck<StoryCard> storyDeck = new Deck<>();
 		Deck<AdventureCard> adventureDeck = new Deck<>();
-		ControllerHub hub = new ControllerHub();
+		ControllerHub hub = new HotSeatHub();
 		Player[] players = new Player[4];
 		TestController[] con = new TestController[players.length];
 		for(int i = 0; i < players.length; i++) {

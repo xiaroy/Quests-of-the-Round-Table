@@ -12,6 +12,9 @@ public class BoardMessage {
 	
 	private OpponentMessage[] opponents;
 	
+	private CardMessage storyCard;
+	private CardMessage questCards[][];
+	
 	public class OpponentMessage {
 		private String name;
 		private String rank;
@@ -68,6 +71,24 @@ public class BoardMessage {
 			}
 			opponents[i].setBoard(oppBoard);
 		}
+		
+		if (view.GetCurrentStory() != null) {
+			storyCard = new CardMessage();
+			storyCard.setCard(view.GetCurrentStory());
+		}
+		else storyCard = null;
+		
+		if (view.getCurrentQuest() != null) {
+			questCards = new CardMessage[view.getCurrentQuest().GetNumberOfStages()][];
+			for (int i = 0; i < questCards.length; i++) {
+				questCards[i] = new CardMessage[view.getCurrentQuest().GetCardsForStage(i).length];
+				for (int j = 0; j < questCards[i].length; j++) {
+					questCards[i][j] = new CardMessage();
+					questCards[i][j].setCard(view.getCurrentQuest().GetCardsForStage(i)[j]);
+				}
+			}
+		}
+		else questCards = null;
 	}
 	
 	public void setName(String name) { this.name = name; }
@@ -88,4 +109,9 @@ public class BoardMessage {
 	public void setOpponents(OpponentMessage[] opponents) { this.opponents = opponents; }
 	public OpponentMessage[] getOpponents() { return opponents; }
 	
+	public void setStoryCard(CardMessage storyCard) { this.storyCard = storyCard; }
+	public CardMessage getStoryCard() { return storyCard; }
+	
+	public void setQuestCards(CardMessage[][] questCards) { this.questCards = questCards; }
+	public CardMessage[][] getQuestCards() { return questCards; }
 }

@@ -8,12 +8,11 @@ import model.player.Player;
 import ui.gameboard.GameBoardPanel;
 import view.GameView;
 
-public class ControllerHub {
+public abstract class ControllerHub {
 
-	private GameState gState;
-	private GameBoardPanel view;
+	protected GameState gState;
 
-    private HashMap<Player, Controller> controllers = new HashMap<>();
+    protected HashMap<Player, Controller> controllers = new HashMap<>();
 
     public void SetGameState(GameState gState)
     {
@@ -23,22 +22,8 @@ public class ControllerHub {
     public void setControllerForPlayer(Player p, Controller c) {
     	controllers.put(p, c);
     }
-    
-    public void setBoardPanel(GameBoardPanel panel) {
-    	view = panel;
-    }
 
-    public ControllerResponse[] PromptUserInput(Player[] players, ControllerMessageType msg)
-    {
-    	ControllerResponse[] response = new ControllerResponse[players.length];
-        int i = 0;
-        for (Player player : players)
-        {
-            response[i] = controllers.get(player).PromptForInput(gState, msg);
-            i++;
-        }
-        return response;
-    }
+    public abstract ControllerResponse[] PromptUserInput(Player[] players, ControllerMessageType msg);
 
     public boolean CanUseCardAbility(Player source, Ability ability)
     {
@@ -50,24 +35,11 @@ public class ControllerHub {
         gState.UseAbilities(source, abilities);
     }
 
-    public void updateView() {
-    	if (view == null)
-    		return;
-    	view.updateView();
-    	view.hideHand();
-    }
+    public abstract void updateView();
     
-    public void sendUIMessage(String msg) {
-    	if (view == null)
-    		return;
-    	view.sendGeneralMessage(null, msg);
-    }
+    public abstract void sendUIMessage(String msg);
     
-    public void sendUIMessage(Player playerView, String msg) {
-    	if (view == null)
-    		return;
-    	view.sendGeneralMessage(GetPlayerPerspective(playerView), msg);
-    }
+    public abstract void sendUIMessage(Player playerView, String msg);
     
     public GameView GetPlayerPerspective(Player player)
     {

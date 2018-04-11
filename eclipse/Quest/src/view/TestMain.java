@@ -2,6 +2,7 @@ package view;
 
 import controller.ControllerHub;
 import controller.ControllerHub.ControllerResponse;
+import controller.HotSeatHub;
 import controller.TestController;
 import controller.TestController.TestCommand;
 import model.cards.AdventureCard;
@@ -35,7 +36,7 @@ public class TestMain {
 	private static GameState testBoarQuest() {
 		Deck<StoryCard> storyDeck = new Deck<>();
 		Deck<AdventureCard> adventureDeck = new Deck<>();
-		ControllerHub hub = new ControllerHub();
+		ControllerHub hub = new HotSeatHub();
 		Player[] players = new Player[4];
 		TestController[] con = new TestController[players.length];
 		for(int i = 0; i < players.length; i++) {

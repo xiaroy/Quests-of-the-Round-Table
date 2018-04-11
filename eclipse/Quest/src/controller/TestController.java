@@ -28,6 +28,9 @@ public class TestController extends Controller {
 	@Override
 	public void updateDisplay() {}
 	
+	@Override
+	public void sendSystemMessage(String msg) {}
+	
 	public void addCommand(TestCommand command) {
 		testCommands.add(command);
 	}
