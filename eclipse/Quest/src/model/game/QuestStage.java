@@ -7,11 +7,13 @@ import model.cards.AdventureCard;
 public class QuestStage {
 
 	private QuestInfo quest;
+	private int stage;
 	
 	ArrayList<AdventureCard> cards = new ArrayList<>();
 	
-	public QuestStage(QuestInfo info) {
+	public QuestStage(QuestInfo info, int stage) {
 		this.quest = info;
+		this.stage = stage;
 	}
 	
 	
@@ -25,6 +27,8 @@ public class QuestStage {
 			total += card.getBattlePoints(state);
 		return total;
 	}
+	
+	public int getStageNum() { return stage; }
 	
 	public AdventureCard[] getCards() { return cards.toArray(new AdventureCard[cards.size()]); }
 }

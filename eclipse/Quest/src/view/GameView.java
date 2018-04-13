@@ -70,6 +70,7 @@ public class GameView {
             return others[0].rank;
         return perspective.GetRank();
     }
+    public Player getPerspectivePlayer() { return perspective; }
 
     public String GetOtherPlayerName(int i) { return others[i].name; }
     public int GetOtherPlayerHandCount(int i) { return others[i].cardsInHand; }

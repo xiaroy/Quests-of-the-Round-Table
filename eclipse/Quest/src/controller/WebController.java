@@ -96,6 +96,9 @@ public class WebController extends Controller {
 					Ability a = lookingForTarget.GetAbilities()[0];
 					a.SetTarget(state, state.getCurrentQuest().getStage(msg.getSelected()));
 					hub.UseCardAbilities(player, new Ability[] {a});
+					server.sendInput(curInputMsg);
+					targetting = false;
+					lookingForTarget = null;
 					updateDisplay();
 				}
 			}
@@ -139,6 +142,7 @@ public class WebController extends Controller {
 				hub.UseCardAbilities(player, a);
 				targetting = false;
 				lookingForTarget = null;
+				server.sendInput(curInputMsg);
 				updateDisplay();
 			}
 		}
@@ -152,11 +156,13 @@ public class WebController extends Controller {
 				InputMessage targetMsg = new InputMessage();
 				targetMsg.setMessage("Select a target for " + card.getName());
 				targetMsg.setOptions(new String[] {responseToString(ControllerResponse.Back)});
+				server.sendInput(targetMsg);
 			}
 			else {
 				Ability a[] = new Ability[1];
 				a[0] = card.GetAbilities()[0];
 				hub.UseCardAbilities(player, a);
+				server.sendInput(curInputMsg);
 				updateDisplay();
 			}
 		}

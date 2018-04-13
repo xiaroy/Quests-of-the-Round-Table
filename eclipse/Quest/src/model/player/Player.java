@@ -1,5 +1,8 @@
 package model.player;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import model.cards.AdventureCard;
 import model.game.CardCriteria;
 import model.game.GameState;
@@ -48,7 +51,12 @@ public class Player {
 
     public boolean CanPlayCardToBoard(AdventureCard card) { return board.CanAddCard(card); }
     
-    public boolean AddCardToHand(AdventureCard card) { return hand.AddCard(card); }
+    public boolean AddCardToHand(AdventureCard card) { 
+    	boolean success = hand.AddCard(card); 
+    	if (success) Logger.getLogger(Player.class.getName()).log(Level.FINE, name + " recieved card: " + card.getName());
+    	else Logger.getLogger(Player.class.getName()).log(Level.FINE, name + " failed to recieve card: " + card.getName());
+    	return success; 
+    }
     public boolean AddCardToBoard(AdventureCard card) { return board.AddCard(card); }
     public boolean PlayCardFromHandToBoard(AdventureCard card)
     {

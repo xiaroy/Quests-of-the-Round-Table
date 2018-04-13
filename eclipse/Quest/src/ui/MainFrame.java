@@ -3,6 +3,7 @@ package ui;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.AIController;
@@ -52,8 +53,21 @@ public class MainFrame extends JFrame {
 				public void run() {
 					cHub = new WebHub();
 					
+					JPanel pnl = new JPanel();
+					JLabel lbl = new JLabel("Starting Server");
+					pnl.add(lbl);
+					setPanel(pnl);
+					
 					SpringServer.setMainFrame(MainFrame.this);
-					SpringServer.startServer();
+					String err = SpringServer.startServer();
+					
+					if (err == null)
+						lbl.setText("Running");
+					else {
+						lbl.setText("Server Failed : " + err);
+						MainFrame.this.pack();
+						return;
+					}
 					
 					while (MainFrame.this.players.size() < players) {
 						try {
@@ -77,8 +91,8 @@ public class MainFrame extends JFrame {
 					
 					for (Controller c : controllers) {
 						cHub.setControllerForPlayer(c.getPlayer(), c);
-						c.updateDisplay();
 					}
+					cHub.updateView();
 					
 					//for (Player p : players) {
 					//	System.out.println(p.GetName());

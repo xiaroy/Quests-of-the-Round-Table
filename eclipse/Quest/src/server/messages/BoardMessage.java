@@ -84,7 +84,12 @@ public class BoardMessage {
 				questCards[i] = new CardMessage[view.getCurrentQuest().GetCardsForStage(i).length];
 				for (int j = 0; j < questCards[i].length; j++) {
 					questCards[i][j] = new CardMessage();
-					questCards[i][j].setCard(view.getCurrentQuest().GetCardsForStage(i)[j]);
+					if (view.getPerspectivePlayer() == view.getCurrentQuest().GetSponsor() || i < view.getCurrentQuest().getCurStage())
+						questCards[i][j].setCard(view.getCurrentQuest().GetCardsForStage(i)[j]);
+					else {
+						questCards[i][j].setName("Unknown");
+						questCards[i][j].setAddress("img/Back.png");
+					}
 				}
 			}
 		}

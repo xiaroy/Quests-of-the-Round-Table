@@ -1,5 +1,8 @@
 package model.cards.abilities;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import model.cards.AdventureCard;
 import model.game.GameState;
 import model.game.GameState.GameTime;
@@ -35,10 +38,15 @@ public class WeaponAbility extends Ability {
         if (CanUseAbility(gState, sourcePlayer))
         {
             if (gState.getCurrentGameTime() == GameTime.SelectQuestEnemies) {
-            	if (sourcePlayer.RemoveCardFromHand(this.getSourceCard()))
+            	if (sourcePlayer.RemoveCardFromHand(this.getSourceCard())) {
             		target.addCard(this.getSourceCard());
+            		Logger.getLogger(WeaponAbility.class.getName()).log(Level.FINE, sourcePlayer.GetName() + " played " + this.getSourceCard().getName() + " to stage " + target.getStageNum());
+            	}
             }
-            else sourcePlayer.PlayCardFromHandToBoard(this.getSourceCard());
+            else {
+            	sourcePlayer.PlayCardFromHandToBoard(this.getSourceCard());
+            	Logger.getLogger(WeaponAbility.class.getName()).log(Level.FINE, sourcePlayer.GetName() + " played " + this.getSourceCard().getName());
+            }
         }
     }
 }

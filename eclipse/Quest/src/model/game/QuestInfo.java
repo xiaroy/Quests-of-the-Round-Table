@@ -19,7 +19,7 @@ public class QuestInfo {
         this.card = card;
         stages = new QuestStage[card.getStages()];
         for (int i = 0; i < stages.length; i++)
-            stages[i] = new QuestStage(this);
+            stages[i] = new QuestStage(this, i);
     }
 
     public QuestInfo(QuestCard card, Player sponsor)
@@ -28,7 +28,7 @@ public class QuestInfo {
         this.card = card;
         stages = new QuestStage[card.getStages()];
         for (int i = 0; i < stages.length; i++)
-            stages[i] = new QuestStage(this);
+            stages[i] = new QuestStage(this, i);
     }
 
     public void SetSponsor(Player sponsor) { this.sponsor = sponsor; }

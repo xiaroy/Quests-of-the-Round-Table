@@ -1,9 +1,14 @@
 package controller;
 
+import java.util.HashMap;
+
 import controller.ControllerHub.ControllerResponse;
 import model.player.Player;
+import view.GameView;
 
 public class WebHub extends ControllerHub {
+	
+	protected HashMap<Player, GameView> views = new HashMap<>();
 
 	@Override
 	public ControllerResponse[] PromptUserInput(Player[] players, ControllerMessageType msg) {
@@ -37,9 +42,16 @@ public class WebHub extends ControllerHub {
 	@Override
 	public void updateView() {
 		for (Player p : controllers.keySet()) {
+			views.put(p, new GameView(gState, p));
 			controllers.get(p).updateDisplay();
 		}
 	}
+	
+	@Override
+	public GameView GetPlayerPerspective(Player player)
+    {
+        return views.get(player);
+    }
 
 	@Override
 	public void sendUIMessage(String msg) {

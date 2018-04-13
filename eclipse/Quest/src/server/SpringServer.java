@@ -47,8 +47,14 @@ public class SpringServer implements WebSocketMessageBrokerConfigurer {
 		//SpringApplication.run(SpringServer.class, args);
 	}
 	
-	public static void startServer() {
-		SpringApplication.run(SpringServer.class, new String[0]);
+	public static String startServer() {
+		try {
+			SpringApplication.run(SpringServer.class, new String[0]);
+		}
+		catch(Exception e) {
+			return e.getMessage();
+		}
+		return null;
 	}
 	
 	private static HashMap<String, WebController> controllers = new HashMap<>();

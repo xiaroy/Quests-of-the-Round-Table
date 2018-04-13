@@ -1,6 +1,8 @@
 package model.game;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import controller.ControllerHub;
 import controller.ControllerHub.ControllerMessageType;
@@ -15,6 +17,7 @@ import model.cards.TournamentCard;
 import model.cards.WeaponCard;
 import model.cards.WeaponCard.WeaponTypes;
 import model.cards.abilities.Ability;
+import model.cards.abilities.WeaponAbility;
 import model.cards.allyCards.*;
 import model.cards.eventCards.*;
 import model.player.Player;
@@ -161,6 +164,7 @@ public class GameState {
             	break;
             System.out.println("Story Card " + currentCard.getName() + " was drawn");
             controller.sendUIMessage(currentCard.getName() + " was drawn for the turn");
+            Logger.getLogger(GameState.class.getName()).log(Level.FINE, currentCard.getName() + " was drawn for the turn");
             controller.updateView();
             controller.PromptUserInput(players, ControllerMessageType.Continue);
             currentTime = GameTime.InEvent;
@@ -188,6 +192,7 @@ public class GameState {
         }
         whoWon += " has won the game";
         controller.sendUIMessage(whoWon);
+        Logger.getLogger(GameState.class.getName()).log(Level.FINE, whoWon);
         System.out.println("The Game Has Ended");
     }
 
@@ -209,9 +214,11 @@ public class GameState {
             {
                 sponsor = players[askPlayer];
                 controller.sendUIMessage(sponsor.GetName() + " choose to sponsor");
+                Logger.getLogger(GameState.class.getName()).log(Level.FINE, sponsor.GetName() + " choose to sponsor");
                 break;
             }
             controller.sendUIMessage(players[askPlayer].GetName() + " declined to sponsor");
+            Logger.getLogger(GameState.class.getName()).log(Level.FINE, players[askPlayer].GetName() + " declined to sponsor");
         }
 
         //Check if anyone sponsored the quest
@@ -256,9 +263,13 @@ public class GameState {
             if (response[i] == ControllerResponse.Yes)
             {
             	controller.sendUIMessage(nonSponsors[i].GetName() + " has joined the quest");
+            	Logger.getLogger(GameState.class.getName()).log(Level.FINE, nonSponsors[i].GetName() + " has joined the quest");
                 pariticipants.add(nonSponsors[i]);
             }
-            else controller.sendUIMessage(nonSponsors[i].GetName() + " declined the quest");
+            else {
+            	controller.sendUIMessage(nonSponsors[i].GetName() + " declined the quest");
+            	Logger.getLogger(GameState.class.getName()).log(Level.FINE, nonSponsors[i].GetName() + " declined the quest");
+            }
         }
         
         //Quest loop to loop for each stage in the quest
@@ -285,16 +296,18 @@ public class GameState {
                 {
                 	stageResults += pariticipants.get(i).GetName() + " failed the quest\n";
                 	controller.sendUIMessage(pariticipants.get(i).GetName() + " failed the quest");
+                	Logger.getLogger(GameState.class.getName()).log(Level.FINE, pariticipants.get(i).GetName() + " failed the quest");
                     pariticipants.remove(i);
                 }
                 else {
                 	stageResults += pariticipants.get(i).GetName() + " continues the quest\n";
+                	Logger.getLogger(GameState.class.getName()).log(Level.FINE, pariticipants.get(i).GetName() + " continues the quest");
                 	controller.sendUIMessage(pariticipants.get(i).GetName() + " continues the quest");
                 }
             }
 
             currentQuest.setCurStage(q+1);
-            controller.sendUIMessage(stageResults);
+            System.out.println(stageResults);
             //Giving all the victors an additional card
             for (Player p : pariticipants)
                 p.AddCardToHand((AdventureCard)adventureDeck.Draw());
@@ -309,11 +322,11 @@ public class GameState {
         String questResults = "";
         for (Player p : pariticipants)
         {
-        	questResults += p.GetName() + " completed the quest\n";
+        	questResults += p.GetName() + " completed the quest and recieved + " + qCard.getReward() + " Shields\n";
         	System.out.println(p.GetName() + " completed the quest");
             p.AddShields(qCard.getReward());
         }
-        controller.sendUIMessage(questResults + "They recieved " + qCard.getReward() + " Shields");
+        Logger.getLogger(GameState.class.getName()).log(Level.FINE, questResults + "They recieved " + qCard.getReward() + " Shields");
 
         //Removing all amour and weapons from each players board
         for (Player p : players)

@@ -156,6 +156,7 @@ function onBoardRecieved(payload){
 		
 		for (var i = 0; i < message.opponents.length; i++){
 			var newFieldArea = divSelfFieldArea.cloneNode(true);
+			newFieldArea.style = "width:" + (100/message.opponents.length) + "%;height:100%;";
 			txtOppName.push(newFieldArea.querySelector('.txtName'));
 			txtOppHand.push(newFieldArea.querySelector('.txtHand'));
 			txtOppRank.push(newFieldArea.querySelector('.txtRank'));
@@ -260,7 +261,7 @@ function displayStage(index){
 			curDisplayStage = 0;
 		
 		for (var i = 0; i < curQuestStageCards[curDisplayStage].length; i++){
-			ivOppBoard.appendChild(createCardElement(curQuestStageCards[curDisplayStage][i]));
+			divStageArea.appendChild(createCardElement(curQuestStageCards[curDisplayStage][i]));
 		}
 		txtCurStage.innerHTML = "Stage " + (curDisplayStage + 1);
 	}
@@ -280,7 +281,7 @@ function createCardElement(params){
 	cardElement.src = params.address;
 	cardElement.alt = params.name;
 	cardElement.index = params.index;
-	cardElement.style = "width:100px;height:160px;"
+	cardElement.style = "height:90%;"
 	cardElement.onclick = function(){ playCard(cardElement); };
 	return cardElement;
 }
